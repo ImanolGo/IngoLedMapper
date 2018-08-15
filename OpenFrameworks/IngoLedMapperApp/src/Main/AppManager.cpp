@@ -78,7 +78,7 @@ void AppManager::setupManagers()
     m_sceneManager.setup();
     m_guiManager.setup();
     
-    m_videoManager.loadTest();
+    //m_videoManager.loadTest();
     m_ledsManager.loadTest();
     m_sceneManager.run();
 }
@@ -91,7 +91,7 @@ void AppManager::update()
     m_guiManager.update();
     m_visualEffectsManager.update();
     m_viewManager.update();
-    m_videoManager.update();
+    //m_videoManager.update();
     m_particlesManager.update();
     m_sceneManager.update();
     m_modelManager.update();

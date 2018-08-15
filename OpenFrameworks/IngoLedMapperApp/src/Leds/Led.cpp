@@ -17,6 +17,8 @@ const float Led::SIZE = 1.0;
 Led::Led(const ofPoint& position, const ofPoint& map_position, int id): BasicVisual(position, SIZE, SIZE), m_id(id), m_mapPosition(map_position)
 {
     m_color = ofColor::black;
+    //ofLogNotice() <<  "Led::Sphere Resolution: " << ofGetSphereResolution();
+    //ofSetSphereResolution(2);
 }
 
 Led::~Led()

@@ -343,11 +343,11 @@ void GuiManager::drawGui()
 
 void GuiManager::setupGuiEvents()
 {
-    //m_gui.onDropdownEvent(this, &GuiManager::onDropdownEvent);
-    //m_gui.onColorPickerEvent(this, &GuiManager::onColorPickerEvent);
+    m_gui.onDropdownEvent(this, &GuiManager::onDropdownEvent);
+    m_gui.onColorPickerEvent(this, &GuiManager::onColorPickerEvent);
     m_gui.onButtonEvent(this, &GuiManager::onButtonEvent);
-    //m_gui.onToggleEvent(this, &GuiManager::onToggleEvent);
-    //m_gui.onMatrixEvent(this, &GuiManager::onMatrixEvent);
+    m_gui.onToggleEvent(this, &GuiManager::onToggleEvent);
+    m_gui.onMatrixEvent(this, &GuiManager::onMatrixEvent);
 }
 
 

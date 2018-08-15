@@ -105,6 +105,8 @@ private:
     
     void updateVideoFbo();
     
+    void updateScenesFbo();
+    
     void updateLedsFbo();
     
     void drawFbos();

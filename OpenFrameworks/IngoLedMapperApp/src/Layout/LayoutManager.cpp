@@ -61,15 +61,20 @@ void LayoutManager::setupFbos()
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
     
+//    ofPtr<ofFbo> fbo = ofPtr<ofFbo>(new ofFbo());
+//    fbo->allocate(width, height, GL_RGBA);
+//    fbo->begin(); ofClear(0);  fbo->end();
+//    m_fbos["Video"] = fbo;
+    
     ofPtr<ofFbo> fbo = ofPtr<ofFbo>(new ofFbo());
     fbo->allocate(width, height, GL_RGBA);
     fbo->begin(); ofClear(0);  fbo->end();
-    m_fbos["Video"] = fbo;
+    m_fbos["Leds"] = fbo;
     
     fbo = ofPtr<ofFbo>(new ofFbo());
     fbo->allocate(width, height, GL_RGBA);
     fbo->begin(); ofClear(0);  fbo->end();
-    m_fbos["Leds"] = fbo;
+    m_fbos["Scenes"] = fbo;
     
 }
 
@@ -152,15 +157,26 @@ void LayoutManager::update()
 
 void LayoutManager::updateFbos()
 {
-    this->updateVideoFbo();
+    //this->updateVideoFbo();
     this->updateLedsFbo();
+    this->updateScenesFbo();
 }
 
 void LayoutManager::updateVideoFbo()
 {
     string name = "Video";
     this->begin(name);
+    ofClear(0);
     AppManager::getInstance().getVideoManager().draw();
+    this->end(name);
+}
+
+void LayoutManager::updateScenesFbo()
+{
+    string name = "Scenes";
+    this->begin(name);
+    ofClear(0);
+    AppManager::getInstance().getSceneManager().draw();
     this->end(name);
 }
 

@@ -174,6 +174,11 @@ void SceneManager::updateFbo()
         ofDisableAlphaBlending();
         ofPopStyle();
     m_fbo.end();
+    
+    
+    ofPixels pixels;
+    m_fbo.readToPixels(pixels);
+    AppManager::getInstance().getLedsManager().setPixels(pixels);
 }
 
 
@@ -190,9 +195,32 @@ void SceneManager::updateTimer()
 
 void SceneManager::draw()
 {
-	ofEnableAlphaBlending();
-    m_fbo.draw(0,0);
-	ofDisableAlphaBlending();
+//    ofEnableAlphaBlending();
+//    m_fbo.draw(0,0);
+//    ofDisableAlphaBlending();
+   
+    ofEnableAlphaBlending();
+    
+    string name = "Scenes";
+    auto rect = AppManager::getInstance().getLayoutManager().getWindowRect(name);
+    float ratio = m_fbo.getWidth()/ m_fbo.getHeight();
+    float height = rect->getHeight();
+    float width = height*ratio;
+    
+    if( width > rect->getWidth() ){
+        width = rect->getWidth();
+        height = width/ratio;
+    }
+    
+    float x = rect->getWidth()*0.5 - width*0.5;
+    float y = rect->getHeight()*0.5 - height*0.5;
+    
+    ofSetColor(0);
+    ofDrawRectangle(0, 0,rect->getWidth(), rect->getHeight());
+    ofSetColor(255);
+    m_fbo.draw(x,y, width, height);
+    
+    ofDisableAlphaBlending();
 }
 
 void SceneManager::draw(const ofRectangle& rect)
@@ -204,36 +232,20 @@ void SceneManager::draw(const ofRectangle& rect)
 void SceneManager::changeScene(string sceneName)
 {
     m_mySceneManager.changeScene(sceneName);
-    if(m_timerOn){
-        m_sceneTimer.start(false,true);
-    }
     m_currentSceneName = sceneName;
     
-    if(m_currentSceneName!="BLANK" && !m_activeScenes){
-        m_activeScenes = true;
-    }
 }
 
 void SceneManager::changeScene(int sceneIndex)
 {
-     m_mySceneManager.changeScene(sceneIndex);
-    if(m_timerOn){
-        m_sceneTimer.start(false,true);
-    }
-     m_currentSceneName = this->getSceneName(sceneIndex);
-    
-    if(m_currentSceneName!="BLANK" && !m_activeScenes){
-        m_activeScenes = true;
-    }
+    m_mySceneManager.changeScene(sceneIndex);
+    m_currentSceneName = this->getSceneName(sceneIndex);
 }
 
 
 void SceneManager::onTransitionTimeChange(float& value)
 {
    m_mySceneManager.setSceneDuration(value,value);
-   if(m_timerOn){
-        m_sceneTimer.start(false,true);
-    }
 }
 
 string SceneManager::getSceneName(int sceneIndex)
