@@ -20,3 +20,6 @@
 #include "ModelManager.h"
 #include "VideoManager.h"
 #include "LedsManager.h"
+#include "SceneManager.h"
+#include "NoiseManager.h"
+#include "ParticlesManager.h"

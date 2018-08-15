@@ -70,6 +70,15 @@ public:
     //! Returns the leds manager
     LedsManager&  getLedsManager() { return m_ledsManager; }
     
+    //! Returns the scenes manager
+    SceneManager&  getSceneManager() { return m_sceneManager; }
+    
+    //! Returns the particles manager
+    ParticlesManager&  getParticlesManager() { return m_particlesManager; }
+    
+    //! Returns the noise manager
+    NoiseManager&  getNoiseManager() { return m_noiseManager; }
+    
   
     //==========================================================================
     
@@ -114,6 +123,9 @@ private:
 
     VideoManager             m_videoManager;             ///< Manages the video loading and processing
     LedsManager              m_ledsManager;               ///< Manages the leds and its position
+    SceneManager             m_sceneManager;            ///< Manages all the scenes
+    ParticlesManager         m_particlesManager;        ///< Manages all the particles parameters
+    NoiseManager             m_noiseManager;            ///< Manages the noise generator
     
     bool                     m_debugMode;
     bool                     m_initialized;

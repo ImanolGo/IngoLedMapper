@@ -25,7 +25,8 @@ class GuiManager: public Manager
 {
     static const string GUI_SETTINGS_FILE_NAME;
     static const string GUI_SETTINGS_NAME;
-   // static const int GUI_WIDTH;
+    static const string PRESETS_PREFIX;
+    static const int GUI_WIDTH;
     
 public:
     
@@ -74,9 +75,33 @@ public:
     
     float getLedsSize() const {return m_ledsSize;}
     
+    void savePresetsValues(const string& sceneName);
+    
+    void loadPresetsValues(const string& sceneName);
+    
+    void setSceneTransitionTime(float value) {m_sceneTransitionTime = value;}
+    
+    void onSceneChange(const string& sceneName);
+    
+    void onSceneChange(int sceneIndex);
+    
+    const ofColor& getColor(int index);
+    
+    void setColor(string name, ofColor& color);
+    
+    void onResetColors();
+    
 private:
     
     void setupGuiParameters();
+    
+    void setupScenesGui();
+    
+    void setupParticlesGui();
+    
+    void setupPaletteGui();
+    
+    void setupLayoutGui();
     
     void setupFileGui();
     
@@ -98,7 +123,11 @@ private:
     ofParameter<float>    m_guiFPS;
     
     
-    ofParameterGroup      m_parameters;
+    ofParameterGroup        m_parameters;
+    ofParameterGroup        m_presets;
+    
+    ofParameter<float>      m_sceneTransitionTime;
+    ofParameter<float>      m_sceneTimer;
     
     ofParameter<string>     m_modelPath;
     ofParameter<string>     m_videoPath;
@@ -117,6 +146,19 @@ private:
     ofParameter<float>      m_ledsSize;
     ofParameter<float>      m_videoSpeed;
     
+    
+    ofParameter<float>      m_particlesDirection;
+    ofParameter<float>      m_particlesDirectionMag;
+    ofParameter<float>      m_particlesSpeed;
+    ofParameter<float>      m_particlesSize;
+    ofParameter<float>      m_particlesFade;
+    ofParameter<int>        m_particlesNum;
+    ofParameter<float>      m_particlesVectSpeed;
+    ofParameter<float>      m_particlesRandomness;
+    ofParameter<float>      m_particlesBlur;
+    
+    vector<ofParameter<int> > m_colorHexVector;
+    vector<ofColor >          m_colors;
     
     
     bool        m_showGui;  //It defines the whether the gui should be shown or not

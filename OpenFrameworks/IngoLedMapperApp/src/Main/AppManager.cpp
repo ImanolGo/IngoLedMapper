@@ -74,10 +74,13 @@ void AppManager::setupManagers()
     m_videoManager.setup();
     m_ledsManager.setup();
     m_keyboardManager.setup();
+    m_particlesManager.setup();
+    m_sceneManager.setup();
     m_guiManager.setup();
     
     m_videoManager.loadTest();
     m_ledsManager.loadTest();
+    m_sceneManager.run();
 }
 
 void AppManager::update()
@@ -89,6 +92,8 @@ void AppManager::update()
     m_visualEffectsManager.update();
     m_viewManager.update();
     m_videoManager.update();
+    m_particlesManager.update();
+    m_sceneManager.update();
     m_modelManager.update();
     m_ledsManager.update();
     m_layoutManager.update();
