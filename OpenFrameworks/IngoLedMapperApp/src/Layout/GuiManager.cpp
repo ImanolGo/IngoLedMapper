@@ -9,7 +9,7 @@
 #include "ofMain.h"
 
 #include "AppManager.h"
-
+    
 #include "GuiManager.h"
 #include "GuiTheme.h"
 
@@ -27,7 +27,7 @@ GuiManager::GuiManager(): Manager(), m_showGui(true)
 
 GuiManager::~GuiManager()
 {
-    //this->saveGuiValues();
+    this->saveGuiValues();
     ofLogNotice() <<"GuiManager::Destructor";
 }
 
@@ -60,7 +60,7 @@ void GuiManager::setupGuiParameters()
     
     //m_gui.setPosition(ofxDatGuiAnchor::TOP_LEFT);
     m_gui.setPosition(0,0);
-    //m_gui.setAssetPath(ofToDataPath("fonts/"));
+    m_gui.setAssetPath(ofToDataPath("fonts/"));
     //m_gui.setAssetPath(ofToDataPath("fonts/"));
     //m_gui.setAssetPath("../Resources/data/fonts/");
     m_gui.setTheme(new GuiTheme());
@@ -166,7 +166,7 @@ void GuiManager::setupLedsGui()
 {
     auto ledsManager = &AppManager::getInstance().getLedsManager();
     
-    m_ledsSize.set("Size", 1.0, 0.0, 5.0);
+    m_ledsSize.set("Size", 0.14, 0.0, 5.0);
     m_ledsSize.addListener(ledsManager, &LedsManager::setSize);
     m_parameters.add(m_ledsSize);
     

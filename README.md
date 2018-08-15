@@ -1,6 +1,6 @@
 # IngoLedMapper
 
-Ingo Led Mapper is a costume made software developed for Ingo Mauerer. It uses the designer's 3D objects, maps its leds and sends it to the ProtoPixel software
+Ingo Led Mapper is a costume-made software developed for Ingo Mauerer. It uses the designer's 3D objects, maps its leds and sends it to the ProtoPixel software
 
 ## Installation
 

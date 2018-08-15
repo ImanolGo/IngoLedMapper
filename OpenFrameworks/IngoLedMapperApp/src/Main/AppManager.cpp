@@ -74,9 +74,10 @@ void AppManager::setupManagers()
     m_videoManager.setup();
     m_ledsManager.setup();
     m_keyboardManager.setup();
-
-
     m_guiManager.setup();
+    
+    m_videoManager.loadTest();
+    m_ledsManager.loadTest();
 }
 
 void AppManager::update()
@@ -100,10 +101,9 @@ void AppManager::draw()
     if(!m_initialized)
         return;
     
-    
     ofBackground(17,17,17);
     m_layoutManager.draw();
-    m_guiManager.draw();    
+    m_guiManager.draw();
 }
 
 void AppManager::toggleDebugMode()
