@@ -76,10 +76,10 @@ void FlatScene::startAnimation()
     
     EffectSettings settings;
     settings.function = LINEAR; settings.type = EASE_OUT;
-    settings.startAnimation = 0; settings.animationTime = parameters.speed*5;
+    settings.startAnimation = 0; settings.animationTime = (10 - parameters.speed)*3;
     
     AppManager::getInstance().getVisualEffectsManager().removeAllVisualEffects(m_image);
-    AppManager::getInstance().getVisualEffectsManager().createScaleEffect(m_image, ofVec2f(0,0),ofVec2f(5,5), settings );
+    AppManager::getInstance().getVisualEffectsManager().createScaleEffect(m_image, ofVec2f(0,0),ofVec2f(3,3), settings );
 }
 
 void FlatScene::resetIndexList()
@@ -107,6 +107,7 @@ void FlatScene::update()
 
 void FlatScene::updateFbo()
 {
+    ofEnableAlphaBlending();
     m_fbo.begin();
     ofEnableAlphaBlending();
         this->drawImages();
@@ -118,7 +119,7 @@ void FlatScene::updateImages()
     auto parameters = AppManager::getInstance().getParticlesManager().getParameters();
     
     m_elapsedTime+=ofGetLastFrameTime();
-    if(m_elapsedTime>=parameters.speed*5){
+    if(m_elapsedTime>=(10 - parameters.speed)*3){
         this->resetImage();
         this->startAnimation();
         m_elapsedTime = 0.0;
@@ -129,6 +130,7 @@ void FlatScene::updateImages()
 
 void FlatScene::draw()
 {
+    ofEnableAlphaBlending();
     ofClear(0);
     m_fbo.draw(0,0);
 }

@@ -1,11 +1,5 @@
-<?xml version="1.0"?>
 <group>
-	<Contrast>1.02</Contrast>
-	<Saturation>1.03</Saturation>
-	<Brightness>1.03</Brightness>
-	<Gamma>1.04</Gamma>
-	<MinInput>0</MinInput>
-	<MaxInput>1</MaxInput>
-	<MinOutput>0</MinOutput>
-	<MaxOutput>1</MaxOutput>
+	<TransitionTime>0.09</TransitionTime>
+	<Size>0.05</Size>
 </group>
+

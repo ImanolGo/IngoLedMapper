@@ -17,7 +17,7 @@
 const string GuiManager::GUI_SETTINGS_FILE_NAME = "xmls/GuiSettings.xml";
 const string GuiManager::GUI_SETTINGS_NAME = "GUI";
 const string GuiManager::PRESETS_PREFIX = "xmls/Presets_";
-const int GuiManager::GUI_WIDTH = 350;
+const int GuiManager::GUI_WIDTH = 300;
 
 
 GuiManager::GuiManager(): Manager(), m_showGui(true)
@@ -230,9 +230,13 @@ void GuiManager::setupLayoutGui()
     m_presets.add(m_sceneTimer);
     
     
+    
+    
+    
     ofxDatGuiFolder* folder = m_gui.addFolder("GENERAL", ofColor::purple);
     folder->addSlider(m_sceneTransitionTime);
-    folder->addSlider(m_sceneTimer);
+    folder->addButton("Save Preset");
+    //folder->addSlider(m_sceneTimer);
     folder->expand();
     m_gui.addBreak();
 }

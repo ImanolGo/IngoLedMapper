@@ -24,7 +24,7 @@ const int LayoutManager::FRAME_MARGIN = 2;
 const string LayoutManager::LAYOUT_FONT =  "fonts/open-sans/OpenSans-Semibold.ttf";
 const string LayoutManager::LAYOUT_FONT_LIGHT =  "fonts/open-sans/OpenSans-Light.ttf";
 
-LayoutManager::LayoutManager(): Manager(), m_drawMode(0)
+LayoutManager::LayoutManager(): Manager(), m_drawMode(0), m_fullscreen(false)
 {
 	//Intentionally left empty
 }
@@ -107,23 +107,28 @@ void LayoutManager::resetWindowRects()
     float ratio = width/ height;
     float frame_width = ofGetWidth() - AppManager::getInstance().getGuiManager().getWidth() - 3*MARGIN;
     float frame_height= ofGetWindowHeight();
-    
-    
     int i = 0;
+    
+    
     for (auto& rect : m_windowRects)
     {
-        rect.second->height = frame_height/m_windowRects.size() - 2*MARGIN;
         rect.second->width = frame_width;
         
-//        if(rect.second->width > frame_width  - 3*MARGIN){
-//            rect.second->width = frame_width  - 3*MARGIN;
-//            rect.second->height = rect.second->width/ratio;
-//        }
+        if(m_fullscreen){
+             rect.second->height = frame_height - 2*MARGIN;
+              rect.second->y = MARGIN;
+        }
+        else{
+             rect.second->height = frame_height/m_windowRects.size() - 2*MARGIN;
+             rect.second->y = i*rect.second->height + 2*i*MARGIN  + MARGIN;
+        }
         
         rect.second->x = AppManager::getInstance().getGuiManager().getWidth()  + 2*MARGIN;
-        rect.second->y = i*rect.second->height + 2*i*MARGIN  + MARGIN;
+        
         i++;
     }
+   
+
 }
 
 void LayoutManager::resetFbos()
@@ -252,17 +257,19 @@ void LayoutManager::addVisuals()
     }
 }
 
-void LayoutManager::onFullScreenChange(bool value)
+void LayoutManager::onFullscreenChange(bool value)
 {
-    if(value){
-        ofSetWindowShape(ofGetScreenWidth(),ofGetScreenHeight());
+    
+    m_fullscreen = value;
+    if(m_fullscreen){
+        this->setDrawMode(DRAW_LEDS);
     }
     else{
-        
-        float width = 4*MARGIN + 2*AppManager::getInstance().getGuiManager().getWidth();
-        float height = AppManager::getInstance().getGuiManager().getHeight() + 2*MARGIN;
-        ofSetWindowShape(width,height);
+        this->setDrawMode(DRAW_NORMAL);
     }
+  
+    this->windowResized(ofGetWidth(),ofGetHeight());
+    AppManager::getInstance().getGuiManager().showGui(!m_fullscreen);
 }
 
 

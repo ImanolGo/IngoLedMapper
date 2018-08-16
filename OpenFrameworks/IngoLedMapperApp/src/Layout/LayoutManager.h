@@ -56,7 +56,9 @@ public:
     //! Draw the layout
     void draw();
     
-    void onFullScreenChange(bool value);
+    void onFullscreenChange(bool value);
+    
+    void onToggleFullscreen() {this->onFullscreenChange(!m_fullscreen);}
     
     void windowResized(int w, int h);
     
@@ -66,7 +68,7 @@ public:
     
     void end(string& name);
     
-    void toggleDrawMode(int mode) {m_drawMode = mode;}
+    void setDrawMode(int mode) {m_drawMode = mode;}
     
     void toggleDrawMode();
     
@@ -140,6 +142,7 @@ private:
     FboMap              m_fbos;
     
     int                 m_drawMode;
+    bool                m_fullscreen;
 
 };
 
