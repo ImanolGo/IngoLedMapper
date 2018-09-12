@@ -116,7 +116,7 @@ void VectorFieldScene::willDraw() {
 
 void VectorFieldScene::willFadeOut() {
     ofLogNotice("VectorFieldScene::willFadeOut");
-    //AppManager::getInstance().getGuiManager().savePresetsValues(getName());
+    AppManager::getInstance().getGuiManager().savePresetsValues(getName());
 }
 
 void VectorFieldScene::willExit() {

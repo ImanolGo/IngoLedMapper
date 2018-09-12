@@ -42,10 +42,16 @@ public:
     virtual void keyReleased(ofKeyEventArgs &e);
 
 
-protected:
+private:
     
     //! Adds the events to be listen to
     virtual void addListeners();
+    
+private:
+    
+    
+    bool m_commandPressed;
+    
 
 };
 

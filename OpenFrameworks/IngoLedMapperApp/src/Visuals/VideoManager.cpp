@@ -40,7 +40,6 @@ void VideoManager::setup()
     
     this->setupFbo();
     this->setupShaders(width,height);
-    this->setupSyphon();
     
     ofLogNotice() <<"VideoManager::initialized" ;
     
@@ -64,14 +63,6 @@ void VideoManager::setupShaders(float width,float height)
 {
     this->setupLevels(width, height);
     this->setupBlur(width, height);
-}
-
-void VideoManager::setupSyphon()
-{
-    string name = AppManager::getInstance().getSettingsManager().getSyphonName();
-    m_syphonServer.setName(name);
-    
-    ofLogNotice() <<"VideoManager::setupSyphon << Setting up Syphon server: " << name;
 }
 
 
@@ -176,7 +167,6 @@ void VideoManager::update()
 {
     this->updateVideo();
     this->updateFbos();
-    this->updateSyphon();
 }
 
 
@@ -198,11 +188,6 @@ void VideoManager::updateFbos()
     
 }
 
-void VideoManager::updateSyphon()
-{
-    m_syphonServer.publishTexture(&m_exportFbo.getTexture());
-    
-}
 
 void VideoManager::drawVideo()
 {

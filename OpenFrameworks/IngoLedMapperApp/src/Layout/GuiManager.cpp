@@ -419,6 +419,15 @@ void GuiManager::onColorPickerEvent(ofxDatGuiColorPickerEvent e)
 {
     cout << "onColorPickerEvent: " << e.target->getName() << " Selected" << endl;
     
+    for (int i = 0; i< m_colorHexVector.size(); i++)
+    {
+        //string colorName = "COLOR " + ofToString(i);
+        string colorName = m_colorHexVector[i].getName();
+        if(e.target->getName() == colorName)
+        {
+            m_colorHexVector[i] = e.color.getHex();
+        }
+    }
     
 }
 

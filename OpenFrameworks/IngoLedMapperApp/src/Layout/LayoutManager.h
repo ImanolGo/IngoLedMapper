@@ -15,7 +15,7 @@
 #include "TextVisual.h"
 #include "ImageVisual.h"
 #include "RectangleVisual.h"
-
+#include "ofxSyphon.h"
 
 
 //========================== class LayoutManager ==============================
@@ -103,7 +103,11 @@ private:
     
     void setupWindowFrames();
     
+    void setupSyphon();
+    
     void updateFbos();
+    
+    void updateSyphon();
     
     void updateVideoFbo();
     
@@ -140,6 +144,8 @@ private:
     FboRectangles       m_windowRects;
     FboFrames           m_windowFrames;
     FboMap              m_fbos;
+    
+    ofxSyphonServer     m_syphonServer;
     
     int                 m_drawMode;
     bool                m_fullscreen;

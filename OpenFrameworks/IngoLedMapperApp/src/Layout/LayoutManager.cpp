@@ -48,6 +48,8 @@ void LayoutManager::setup()
   
     this->setupFbos();
     this->setupWindowFrames();
+    this->setupSyphon();
+
     
     this->createTextVisuals();
     this->createImageVisuals();
@@ -78,6 +80,14 @@ void LayoutManager::setupFbos()
     
 }
 
+
+void LayoutManager::setupSyphon()
+{
+    string name = AppManager::getInstance().getSettingsManager().getSyphonName();
+    m_syphonServer.setName(name);
+    
+    ofLogNotice() <<"LayoutManager::setupSyphon << Setting up Syphon server: " << name;
+}
 
 void LayoutManager::setupWindowFrames()
 {
@@ -165,6 +175,7 @@ void LayoutManager::updateFbos()
     //this->updateVideoFbo();
     this->updateLedsFbo();
     this->updateScenesFbo();
+    this->updateSyphon();
 }
 
 void LayoutManager::updateVideoFbo()
@@ -186,6 +197,12 @@ void LayoutManager::updateScenesFbo()
 }
 
 
+void LayoutManager::updateSyphon()
+{
+    string name = "Scenes";
+    
+    m_syphonServer.publishTexture(&m_fbos[name]->getTexture());
+}
 
 void LayoutManager::updateLedsFbo()
 {
@@ -281,7 +298,7 @@ void LayoutManager::draw()
     switch (m_drawMode)
     {
         case DRAW_NORMAL:  this->drawNormal(); break;
-        case DRAW_VIDEO:  this->drawVideo(); break;
+        //case DRAW_VIDEO:  this->drawVideo(); break;
         case DRAW_LEDS:  this->drawLeds(); break;
         default: this->drawNormal(); break;
     }
@@ -358,12 +375,12 @@ void LayoutManager::end(string& name)
 
 void LayoutManager::toggleDrawMode()
 {
-    if(m_drawMode == 0)
+    if(m_drawMode == DRAW_NORMAL)
     {
-        m_drawMode = 1;
+        m_drawMode = DRAW_LEDS;
     }
     else{
-        m_drawMode = 0;
+        m_drawMode = DRAW_NORMAL;
     }
     
 }

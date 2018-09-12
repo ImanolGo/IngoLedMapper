@@ -12,7 +12,7 @@
 #include "Manager.h"
 #include "ofxPSLevels.h"
 #include "ofxBlur.h"
-#include "ofxSyphon.h"
+
 
 
 //========================== class VideoManager ==============================
@@ -84,8 +84,6 @@ private:
     
     void setupFbo();
     
-    void setupSyphon();
-    
     void setupShaders(float width,float height);
     
     void setupBlur(float width, float height);
@@ -93,8 +91,6 @@ private:
     void setupLevels(float width, float height);
     
     void updateFbos();
-    
-    void updateSyphon();
     
     void updateVideo();
     
@@ -111,8 +107,6 @@ private:
     ofxPSLevels     m_levels;
     ofxBlur         m_blur;
     //ofxAVFVideoPlayer*   m_videoPlayer;
-    
-    ofxSyphonServer     m_syphonServer;
     
     ofFbo           m_fbo;
     ofFbo           m_exportFbo;
