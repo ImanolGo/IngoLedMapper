@@ -26,6 +26,7 @@ NoiseScene::~NoiseScene()
 void NoiseScene::setup() {
     ofLogNotice(getName() + "::setup");
     this->setupNoiseShader();
+    this->setupGradient();
 }
 
 void NoiseScene::setupNoiseShader()
@@ -38,6 +39,27 @@ void NoiseScene::setupNoiseShader()
     }
 }
 
+void NoiseScene::setupGradient()
+{
+    m_gradient.reset();
+    ofColor color = AppManager::getInstance().getGuiManager().getColor(0);
+    m_gradient.addColor(color);
+    color = AppManager::getInstance().getGuiManager().getColor(1);
+    m_gradient.addColor(color);
+//    color = AppManager::getInstance().getGuiManager().getColor(2);
+//    m_gradient.addColor(color);
+//    color = AppManager::getInstance().getGuiManager().getColor(3);
+//    m_gradient.addColor(color);
+//    color = AppManager::getInstance().getGuiManager().getColor(4);
+//    m_gradient.addColor(color);
+//    color = AppManager::getInstance().getGuiManager().getColor(5);
+//    m_gradient.addColor(color);
+    
+//    m_gradient.addColor( ofColor::red );
+//    m_gradient.addColor( ofColor::green );
+//    m_gradient.addColor( ofColor::yellow );
+
+}
 
 
 void NoiseScene::update()
@@ -62,9 +84,12 @@ void NoiseScene::drawNoise()
     auto parameters = AppManager::getInstance().getParticlesManager().getParameters();
     
     float grain =  ofMap(parameters.num,0.0,800,0.0,10.0,true);
-    float speed  = ofMap(parameters.speed,0.0,5.0,0.0,1.0,true);
-    auto color = AppManager::getInstance().getGuiManager().getColor(1);
+    float speed  = ofMap(parameters.speed,0.0,10.0,0.0,2.0,true);
+    float colorPct  = ofMap(sin(ofGetElapsedTimef()*speed),-1.0,1.0,0.0,1.0,true);
     
+    //auto color = AppManager::getInstance().getGuiManager().getColor(1);
+
+    ofColor color = m_gradient.getColorAtPercent(colorPct);
     m_noiseShader.begin();
     m_noiseShader.setUniform3f("iColor",color.r/255.0,color.g/255.0,color.b/255.0);
     m_noiseShader.setUniform3f("iResolution", width, height, 0.0);
@@ -72,12 +97,16 @@ void NoiseScene::drawNoise()
     m_noiseShader.setUniform1f("inoise_grain", grain);
         ofDrawRectangle(0, 0, width, height);
     m_noiseShader.end();
+    
+    
+   // m_gradient.drawDebug(0,0, width, height);
 }
 
 
 void NoiseScene::willFadeIn() {
     AppManager::getInstance().getGuiManager().loadPresetsValues(getName());
-    ofLogNotice("NoiseScene::willFadeIn");    
+    ofLogNotice("NoiseScene::willFadeIn");
+    this->setupGradient();
 }
 
 void NoiseScene::willDraw() {

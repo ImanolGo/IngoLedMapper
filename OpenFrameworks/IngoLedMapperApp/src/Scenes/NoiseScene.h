@@ -11,6 +11,7 @@
 #pragma once
 
 #include "ofxScene.h"
+#include "ofxColorGradient.h"
 
 class NoiseScene : public ofxScene {
     
@@ -47,12 +48,15 @@ private:
     
     void setupNoiseShader();
     
+    void setupGradient();
+    
     void drawNoise();
     
 private:
     
-    ofColor         m_color;
-    ofShader        m_noiseShader;
+    ofColor                     m_color;
+    ofShader                    m_noiseShader;
+    ofxColorGradient<ofColor>   m_gradient;
 
 };
 
