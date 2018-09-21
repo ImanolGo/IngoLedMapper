@@ -11,6 +11,7 @@
 		00F8DAC81953313F8180A13C /* ofxTextBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1486C841BC2A30DB7CBC449C /* ofxTextBlock.cpp */; };
 		040259BAD9E7E5CDA062C1FF /* Verdana.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 63946788F06FDE10D90614A3 /* Verdana.ttf */; };
 		059F15A57C00F89CF43FDDD6 /* ofxSmartFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE9EA26E2A646CE843DEEB1E /* ofxSmartFont.cpp */; };
+		083B732F2154D8CF00499058 /* NorthernLightsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 083B732D2154D8CF00499058 /* NorthernLightsScene.cpp */; };
 		084517622124819B00D845C0 /* CloudScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 084517502124819A00D845C0 /* CloudScene.cpp */; };
 		084517632124819B00D845C0 /* SceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 084517512124819A00D845C0 /* SceneManager.cpp */; };
 		084517642124819B00D845C0 /* BlankScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 084517562124819A00D845C0 /* BlankScene.cpp */; };
@@ -143,6 +144,8 @@
 		05B11A7F5D0BA7A59C78DDC4 /* ofxDatGuiControls.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDatGuiControls.h; path = src/Addons/ofxDatGui/src/components/ofxDatGuiControls.h; sourceTree = SOURCE_ROOT; };
 		05C7229BA31FC4B627D19D84 /* ofxSyphonServer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSyphonServer.h; path = src/Addons/ofxSyphon/src/ofxSyphonServer.h; sourceTree = SOURCE_ROOT; };
 		0731597061D6181DB86681B1 /* ofxDatGuiSlider.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDatGuiSlider.h; path = src/Addons/ofxDatGui/src/components/ofxDatGuiSlider.h; sourceTree = SOURCE_ROOT; };
+		083B732D2154D8CF00499058 /* NorthernLightsScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NorthernLightsScene.cpp; path = Scenes/NorthernLightsScene.cpp; sourceTree = "<group>"; };
+		083B732E2154D8CF00499058 /* NorthernLightsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NorthernLightsScene.h; path = Scenes/NorthernLightsScene.h; sourceTree = "<group>"; };
 		0845174F2124819A00D845C0 /* VectorFieldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VectorFieldScene.h; path = Scenes/VectorFieldScene.h; sourceTree = "<group>"; };
 		084517502124819A00D845C0 /* CloudScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudScene.cpp; path = Scenes/CloudScene.cpp; sourceTree = "<group>"; };
 		084517512124819A00D845C0 /* SceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SceneManager.cpp; path = Scenes/SceneManager.cpp; sourceTree = "<group>"; };
@@ -384,6 +387,8 @@
 				0845174F2124819A00D845C0 /* VectorFieldScene.h */,
 				084517612124819B00D845C0 /* VideoScene.cpp */,
 				0845175E2124819A00D845C0 /* VideoScene.h */,
+				083B732D2154D8CF00499058 /* NorthernLightsScene.cpp */,
+				083B732E2154D8CF00499058 /* NorthernLightsScene.h */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -1130,6 +1135,7 @@
 				1AF15FCF93D2DDD6D4285C8E /* AppManager.cpp in Sources */,
 				4D1367322AED8F488D1EF62B /* IngoLedMapperApp.cpp in Sources */,
 				DA22DA3A4F2E611DF50078F2 /* main.cpp in Sources */,
+				083B732F2154D8CF00499058 /* NorthernLightsScene.cpp in Sources */,
 				58BCEB4034B30CB4A3456FC7 /* SettingsManager.cpp in Sources */,
 				5E2060A0FB5AA49034B6197B /* myEasyCam.cpp in Sources */,
 				41495ECD0155116522DCA99A /* VideoManager.cpp in Sources */,

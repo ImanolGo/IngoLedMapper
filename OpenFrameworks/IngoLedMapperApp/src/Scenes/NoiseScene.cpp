@@ -63,7 +63,7 @@ void NoiseScene::drawNoise()
     
     float grain =  ofMap(parameters.num,0.0,800,0.0,10.0,true);
     float speed  = ofMap(parameters.speed,0.0,5.0,0.0,1.0,true);
-    auto color = AppManager::getInstance().getGuiManager().getColor(0);
+    auto color = AppManager::getInstance().getGuiManager().getColor(1);
     
     m_noiseShader.begin();
     m_noiseShader.setUniform3f("iColor",color.r/255.0,color.g/255.0,color.b/255.0);

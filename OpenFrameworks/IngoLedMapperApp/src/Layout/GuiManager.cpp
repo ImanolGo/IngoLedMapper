@@ -197,7 +197,7 @@ void GuiManager::setupPaletteGui()
     // add some color pickers to color our lines //
     ofxDatGuiFolder* f1 = m_gui.addFolder("PALETTE", ofColor::fromHex(0x2FA1D6));
     
-    int numColors = 5;
+    int numColors = 6;
     for(int i = 0; i < numColors; i++)
     {
         string colorName = "COLOR " + ofToString(i);

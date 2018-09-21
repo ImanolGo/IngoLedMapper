@@ -131,7 +131,7 @@ void VectorFieldVisual::updateParticles()
 
 void VectorFieldVisual::updateFbo()
 {
-    float fClearOpacity =  1.0;
+    float fClearOpacity =  50.0;
     float framesToDie = 255/fClearOpacity;
     float dt = ofGetLastFrameTime();
     //float fadeTime = 2.0;
@@ -141,10 +141,10 @@ void VectorFieldVisual::updateFbo()
     m_fbo.begin();
     
   
-    
+    auto color = AppManager::getInstance().getGuiManager().getColor(0);
      if(m_isAdditiveBlend){
          ofClear(0);
-         auto color = AppManager::getInstance().getGuiManager().getColor(0);
+         
          ofSetColor(color);
          ofDrawRectangle(0,0, m_fbo.getWidth(), m_fbo.getHeight());
      }
@@ -158,7 +158,7 @@ void VectorFieldVisual::updateFbo()
              
             //auto color = AppManager::getInstance().getGuiManager().getColor(0);
              
-            // ofSetColor(color.r, color.g, color.b, (int)fClearOpacity);
+             //ofSetColor(color.r, color.g, color.b, (int)fClearOpacity);
              ofSetColor(0, (int)fClearOpacity);
              ofFill();
              ofDrawRectangle(0,0, m_fbo.getWidth(), m_fbo.getHeight());

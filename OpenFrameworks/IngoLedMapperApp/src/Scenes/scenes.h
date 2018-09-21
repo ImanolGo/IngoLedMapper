@@ -18,5 +18,6 @@
 #include "FlatScene.h"
 #include "CloudScene.h"
 #include "NoiseScene.h"
+#include "NorthernLightsScene.h"
 
 
