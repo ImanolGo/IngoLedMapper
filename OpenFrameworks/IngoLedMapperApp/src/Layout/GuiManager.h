@@ -157,6 +157,7 @@ private:
     ofParameter<float>      m_particlesRandomness;
     ofParameter<float>      m_particlesBlur;
     
+    
     vector<ofParameter<int> > m_colorHexVector;
     vector<ofColor >          m_colors;
     

@@ -27,7 +27,7 @@
 
 enum ScreenMode{
     DRAW_NORMAL = 0,
-    DRAW_VIDEO,
+    DRAW_SCENES,
     DRAW_LEDS
 };
 
@@ -125,7 +125,7 @@ private:
     
     void drawNormal();
     
-    void drawVideo();
+    void drawScenes();
 
     
 private:

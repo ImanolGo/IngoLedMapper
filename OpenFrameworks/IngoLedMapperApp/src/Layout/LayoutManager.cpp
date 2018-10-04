@@ -298,16 +298,16 @@ void LayoutManager::draw()
     switch (m_drawMode)
     {
         case DRAW_NORMAL:  this->drawNormal(); break;
-        //case DRAW_VIDEO:  this->drawVideo(); break;
+        case DRAW_SCENES:  this->drawScenes(); break;
         case DRAW_LEDS:  this->drawLeds(); break;
         default: this->drawNormal(); break;
     }
    
 }
 
-void LayoutManager::drawVideo()
+void LayoutManager::drawScenes()
 {	
-    m_fbos["Video"]->draw(0,0, ofGetWidth(), ofGetHeight());
+    m_fbos["Scenes"]->draw(0,0, ofGetWidth(), ofGetHeight());
 }
 
 void LayoutManager::drawLeds()

@@ -13,6 +13,7 @@
 #include "Manager.h"
 #include "ofxSceneManager.h"
 #include "ofxSimpleTimer.h"
+#include "ofxPSLevels.h"
 
 
 //========================== class SceneManager ==============================
@@ -81,6 +82,22 @@ public:
     
     void setTimerOn(bool value);
     
+    void setContrast(float& value) {m_levels.contrast = value;}
+    
+    void setSaturation(float& value) {m_levels.saturation = value;}
+    
+    void setBrightness(float& value) {m_levels.brightness = value;}
+    
+    void setGamma(float& value) {m_levels.gamma = value;}
+    
+    void setMinInput(float& value) {m_levels.minInput = value;}
+    
+    void setMaxInput(float& value) {m_levels.maxInput = value;}
+    
+    void setMinOutput(float& value) {m_levels.minOutput = value;}
+    
+    void setMaxOutput(float& value) {m_levels.maxOutput = value;}
+    
 private:
     
     //! Create the scenes
@@ -91,6 +108,8 @@ private:
     
     //! Set up the scene timer
     void setupTimer();
+    
+    void setupLevels(float width, float height);
     
      //! Initializes the scene list
     //void initializeSceneList();
@@ -116,6 +135,7 @@ private:
     ofFbo                    m_fbo;
     ofxSimpleTimer           m_sceneTimer;
     float                    m_alpha;
+    ofxPSLevels              m_levels;
     
     vector<string>           m_sceneList;
     string                   m_currentSceneName;

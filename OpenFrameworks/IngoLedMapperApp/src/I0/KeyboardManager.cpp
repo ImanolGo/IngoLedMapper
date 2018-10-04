@@ -60,6 +60,24 @@ void KeyboardManager::keyPressed(ofKeyEventArgs &e)
             //ofLogVerbose() <<"KeyboardManager::keyReleased-> " + ofToString(key);
             AppManager::getInstance().getLayoutManager().onToggleFullscreen();
         }
+        
+        if(key == 'n' || key == 'N')
+        {
+            //ofLogVerbose() <<"KeyboardManager::keyReleased-> " + ofToString(key);
+            AppManager::getInstance().getLayoutManager().setDrawMode(DRAW_NORMAL);
+        }
+        
+        if(key == 's' || key == 'S')
+        {
+            //ofLogVerbose() <<"KeyboardManager::keyReleased-> " + ofToString(key);
+            AppManager::getInstance().getLayoutManager().setDrawMode(DRAW_SCENES);
+        }
+        
+        if(key == 'l' || key == 'L')
+        {
+            //ofLogVerbose() <<"KeyboardManager::keyReleased-> " + ofToString(key);
+            AppManager::getInstance().getLayoutManager().setDrawMode(DRAW_LEDS);
+        }
     }
     
 //    if(key == 'g' || key == 'G') {

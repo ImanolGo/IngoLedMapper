@@ -44,7 +44,7 @@ void GuiManager::setup()
     this->setupGuiParameters();
     this->setupScenesGui();
     //this->setupFileGui();
-    //this->setupLevelsGui();
+    this->setupLevelsGui();
     this->setupLayoutGui();
     this->setupParticlesGui();
     this->setupPaletteGui();
@@ -230,9 +230,6 @@ void GuiManager::setupLayoutGui()
     m_presets.add(m_sceneTimer);
     
     
-    
-    
-    
     ofxDatGuiFolder* folder = m_gui.addFolder("GENERAL", ofColor::purple);
     folder->addSlider(m_sceneTransitionTime);
     folder->addButton("Save Preset");
@@ -244,57 +241,47 @@ void GuiManager::setupLayoutGui()
 
 void GuiManager::setupLevelsGui()
 {
-    auto videoManager = &AppManager::getInstance().getVideoManager();
+    auto sceneManager = &AppManager::getInstance().getSceneManager();
    
     m_contrast.set("Contrast", 1.0, 0.0, 2.0);
-    m_contrast.addListener(videoManager, &VideoManager::setContrast);
-    m_parameters.add(m_contrast);
+    m_contrast.addListener(sceneManager, &SceneManager::setContrast);
+    m_presets.add(m_contrast);
     
     m_saturation.set("Saturation", 1.0, 0.0, 2.0);
-    m_saturation.addListener(videoManager, &VideoManager::setSaturation);
-    m_parameters.add(m_saturation);
+    m_saturation.addListener(sceneManager, &SceneManager::setSaturation);
+    m_presets.add(m_saturation);
     
     m_brightness.set("Brightness", 1.0, 0.0, 2.0);
-    m_brightness.addListener(videoManager, &VideoManager::setBrightness);
-    m_parameters.add(m_brightness);
+    m_brightness.addListener(sceneManager, &SceneManager::setBrightness);
+    m_presets.add(m_brightness);
     
     m_gamma.set("Gamma", 1.0, 0.0, 2.0);
-    m_gamma.addListener(videoManager, &VideoManager::setGamma);
-    m_parameters.add(m_gamma);
-    
-    m_blur.set("Blur", 0.0, 0.0, 10.0);
-    m_blur.addListener(videoManager, &VideoManager::setBlurScale);
-    m_parameters.add(m_blur);
+    m_gamma.addListener(sceneManager, &SceneManager::setGamma);
+    m_presets.add(m_gamma);
     
     m_minInput.set("MinInput", 0.0, 0.0, 1.0);
-    m_minInput.addListener(videoManager, &VideoManager::setMinInput);
-    m_parameters.add(m_minInput);
+    m_minInput.addListener(sceneManager, &SceneManager::setMinInput);
+    m_presets.add(m_minInput);
     
     m_maxInput.set("MaxInput", 1.0, 0.0, 1.0);
-    m_maxInput.addListener(videoManager, &VideoManager::setMaxInput);
-    m_parameters.add(m_maxInput);
+    m_maxInput.addListener(sceneManager, &SceneManager::setMaxInput);
+    m_presets.add(m_maxInput);
     
     m_minOutput.set("MinOutput", 0.0, 0.0, 1.0);
-    m_minOutput.addListener(videoManager, &VideoManager::setMinOutput);
-    m_parameters.add(m_minOutput);
+    m_minOutput.addListener(sceneManager, &SceneManager::setMinOutput);
+    m_presets.add(m_minOutput);
     
     m_maxOutput.set("MaxOutput", 1.0, 0.0, 1.0);
-    m_maxOutput.addListener(videoManager, &VideoManager::setMaxOutput);
-    m_parameters.add(m_maxOutput);
-    
-    m_videoSpeed.set("Speed", 1.0, 0.0, 2.0);
-    m_videoSpeed.addListener(videoManager, &VideoManager::setSpeed);
-    m_parameters.add(m_videoSpeed);
-    
+    m_maxOutput.addListener(sceneManager, &SceneManager::setMaxOutput);
+    m_presets.add(m_maxOutput);
     
     
     ofxDatGuiFolder* folder = m_gui.addFolder("GENERAL", ofColor::purple);
-    folder->addSlider(m_videoSpeed);
+    
     folder->addSlider(m_contrast);
     folder->addSlider(m_saturation);
     folder->addSlider(m_brightness);
     folder->addSlider(m_gamma);
-    folder->addSlider(m_blur);
     folder->addSlider(m_minInput);
     folder->addSlider(m_maxInput);
     folder->addSlider(m_minOutput);
