@@ -11,7 +11,7 @@
 #include "ofxVectorField.h"
 #include "VectorFieldParticle.h"
 #include "ParticlesManager.h"
-#include "ofxBlur.h"
+#include "ofxFboBlur.h"
 #include "ofxPostProcessing.h"
 
 #define radian2degree(a) (a * 57.295779513082)
@@ -108,7 +108,7 @@ private:
     int         m_skipFrames;
     
     ofFbo       m_fbo;
-    ofxBlur     m_blur;
+    ofxFboBlur     m_blur;
     int         m_numParticles;
     ofShader    m_thickLineShader;
     float       m_size;

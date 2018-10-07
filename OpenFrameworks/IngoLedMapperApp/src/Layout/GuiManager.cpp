@@ -173,7 +173,7 @@ void GuiManager::setupParticlesGui()
     m_particlesRandomness.addListener(particlesManager, &ParticlesManager::setRandonmess);
     m_presets.add(m_particlesRandomness);
     
-    m_particlesBlur.set("Blur", 0.05, 0.0, 0.15);
+    m_particlesBlur.set("Blur", 0.05, 0.0, 1.0);
     m_particlesBlur.addListener(particlesManager, &ParticlesManager::setBlur);
     m_presets.add(m_particlesBlur);
     
@@ -230,7 +230,7 @@ void GuiManager::setupLayoutGui()
     m_presets.add(m_sceneTimer);
     
     
-    ofxDatGuiFolder* folder = m_gui.addFolder("GENERAL", ofColor::purple);
+    ofxDatGuiFolder* folder = m_gui.addFolder("GENERAL", ofColor::pink);
     folder->addSlider(m_sceneTransitionTime);
     folder->addButton("Save Preset");
     //folder->addSlider(m_sceneTimer);

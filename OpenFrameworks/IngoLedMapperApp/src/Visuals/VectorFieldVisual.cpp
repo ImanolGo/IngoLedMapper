@@ -100,8 +100,25 @@ void VectorFieldVisual::setupBlur()
 {
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
-    m_blur.setup(width, height);
+    //m_blur.setup(width, height);
     //m_blur.setScale(0.05);
+    
+    ofFbo::Settings s;
+    s.width = width;
+    s.height = height;
+    s.internalformat = GL_RGBA;
+    s.textureTarget = GL_TEXTURE_RECTANGLE_ARB;
+    s.maxFilter = GL_LINEAR; GL_NEAREST;
+    s.numSamples = 0;
+    s.numColorbuffers = 1;
+    s.useDepth = false;
+    s.useStencil = false;
+    
+    m_blur.setup(s, false);
+    m_blur.blurPasses = 3;
+    m_blur.blurOffset = 0;
+    m_blur.numBlurOverlays = 1;
+    m_blur.blurOverlayGain = 255;
 }
 
 void VectorFieldVisual::update()
@@ -149,7 +166,8 @@ void VectorFieldVisual::updateFbo()
          ofDrawRectangle(0,0, m_fbo.getWidth(), m_fbo.getHeight());
      }
      else{
-        m_blur.begin();
+       // m_blur.begin();
+         m_blur.beginDrawScene();
          
          if(m_skipFrames>=numSkipFrames){
              glEnable(GL_BLEND);
@@ -182,8 +200,12 @@ void VectorFieldVisual::updateFbo()
         this->drawParticles();
     
      if(!m_isAdditiveBlend){
-         m_blur.end();
-         m_blur.draw();
+//         m_blur.end();
+//         m_blur.draw();
+         
+         m_blur.endDrawScene();
+         m_blur.performBlur();
+        m_blur.drawBlurFbo();
         
      }
      m_fbo.end();
@@ -246,7 +268,10 @@ void VectorFieldVisual::addParameters(ParticleParameters& parameters)
     m_numParticles = (int) ofClamp(parameters.num, 0, m_particles.size());
     m_fadeTime = parameters.fadeTime;
     //m_speed = parameters.vectorSpeed;
-    m_blur.setScale(parameters.blur);
+    //m_blur.setScale(parameters.blur);
+    
+   // m_blurValue = 4*parameters.blur;
+    m_blur.blurOffset = 4*parameters.blur;
 }
 
 void VectorFieldVisual::setColor(int index, ofColor& color)
