@@ -276,7 +276,7 @@ void GuiManager::setupLevelsGui()
     m_presets.add(m_maxOutput);
     
     
-    ofxDatGuiFolder* folder = m_gui.addFolder("GENERAL", ofColor::purple);
+    ofxDatGuiFolder* folder = m_gui.addFolder("LEVELS", ofColor::purple);
     
     folder->addSlider(m_contrast);
     folder->addSlider(m_saturation);

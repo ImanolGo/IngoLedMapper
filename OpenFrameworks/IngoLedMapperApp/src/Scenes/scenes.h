@@ -19,5 +19,5 @@
 #include "CloudScene.h"
 #include "NoiseScene.h"
 #include "NorthernLightsScene.h"
-
+#include "StarsScene.h"
 

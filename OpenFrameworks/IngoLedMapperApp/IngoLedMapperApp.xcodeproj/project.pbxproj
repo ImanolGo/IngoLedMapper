@@ -30,6 +30,7 @@
 		084517842124920600D845C0 /* ofxVectorField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 084517832124920600D845C0 /* ofxVectorField.cpp */; };
 		0851F56F2121E95B00764878 /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0851F56E2121E95B00764878 /* Syphon.framework */; };
 		0851F5712121E97400764878 /* Syphon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0851F5702121E97400764878 /* Syphon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		08A757FA216A1D61006854BE /* StarsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08A757F9216A1D61006854BE /* StarsScene.cpp */; };
 		0C8E6109528865C738BFD818 /* SyphonNameboundClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A78388489306C3277E37BA4F /* SyphonNameboundClient.m */; };
 		106B97E658138710B59773AE /* GodRaysPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE19FA45FB564FF3B31F7717 /* GodRaysPass.cpp */; };
 		1835B306208122634C04CA79 /* ModelManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2958AE46C53B67E9739A17 /* ModelManager.cpp */; };
@@ -184,6 +185,8 @@
 		084517832124920600D845C0 /* ofxVectorField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxVectorField.cpp; path = Addons/ofxVectorField/src/ofxVectorField.cpp; sourceTree = "<group>"; };
 		0851F56E2121E95B00764878 /* Syphon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Syphon.framework; path = src/Addons/ofxSyphon/libs/Syphon/lib/osx/Syphon.framework; sourceTree = "<group>"; };
 		0851F5702121E97400764878 /* Syphon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Syphon.framework; path = src/Addons/ofxSyphon/libs/Syphon/lib/osx/Syphon.framework; sourceTree = "<group>"; };
+		08A757F8216A1D60006854BE /* StarsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StarsScene.h; path = Scenes/StarsScene.h; sourceTree = "<group>"; };
+		08A757F9216A1D61006854BE /* StarsScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StarsScene.cpp; path = Scenes/StarsScene.cpp; sourceTree = "<group>"; };
 		09BB1D7613A1F9D8E8B11D7A /* KeyboardManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = KeyboardManager.h; path = src/I0/KeyboardManager.h; sourceTree = SOURCE_ROOT; };
 		09F8F2DF1D53E65319F30B96 /* LightManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = LightManager.cpp; path = src/Engine/3D/LightManager.cpp; sourceTree = SOURCE_ROOT; };
 		0ED75BB7C2FE645940BF27BA /* License.txt */ = {isa = PBXFileReference; explicitFileType = file; fileEncoding = 30; name = License.txt; path = src/Addons/ofxSyphon/License.txt; sourceTree = SOURCE_ROOT; };
@@ -409,6 +412,8 @@
 				0845175E2124819A00D845C0 /* VideoScene.h */,
 				083B732D2154D8CF00499058 /* NorthernLightsScene.cpp */,
 				083B732E2154D8CF00499058 /* NorthernLightsScene.h */,
+				08A757F9216A1D61006854BE /* StarsScene.cpp */,
+				08A757F8216A1D60006854BE /* StarsScene.h */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -1127,6 +1132,7 @@
 				ACB63CE0B5D6B2C3874ACF33 /* README.md in Sources */,
 				0845176A2124819B00D845C0 /* VideoScene.cpp in Sources */,
 				E8DCE950B5C5DDF9DACD286A /* ofxSyphonClient.mm in Sources */,
+				08A757FA216A1D61006854BE /* StarsScene.cpp in Sources */,
 				EF0089626C4D8C2EB283BF9B /* ofxSyphonServer.mm in Sources */,
 				E2C4EC0DD7FCC79D37B6D59D /* ofxSyphonServerDirectory.mm in Sources */,
 				00F8DAC81953313F8180A13C /* ofxTextBlock.cpp in Sources */,
