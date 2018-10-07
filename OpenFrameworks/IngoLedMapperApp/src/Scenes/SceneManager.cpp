@@ -74,6 +74,11 @@ void SceneManager::createScenes()
     //scene = ofPtr<ofxScene> (new VectorFieldScene("LOVED"));
     m_mySceneManager.addScene(scene);
     
+    //Create NORDLICHT
+    scene = ofPtr<ofxScene> (new NorthernLightsScene2("NORDLICHT2"));
+    //scene = ofPtr<ofxScene> (new VectorFieldScene("LOVED"));
+    m_mySceneManager.addScene(scene);
+    
     //Create STERNE
     scene = ofPtr<ofxScene> (new StarsScene("STERNE"));;
     m_mySceneManager.addScene(scene);
