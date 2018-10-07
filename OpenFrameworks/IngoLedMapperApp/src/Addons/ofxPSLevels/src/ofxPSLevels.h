@@ -14,7 +14,7 @@ public:
     ofxPSLevels();
     
     void setup();
-    void setup(int w, int h);
+    bool setup(int w, int h);
     void begin();
     void end();
     void draw();

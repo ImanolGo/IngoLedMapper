@@ -122,7 +122,14 @@ void SceneManager::setupFbo()
 
 void SceneManager::setupLevels(float width, float height)
 {
-    m_levels.setup(width,height);
+    if( m_levels.setup(width,height))
+    {
+         ofLogNotice() <<"SceneManager::setupLevels << SUSCCESSFUL";
+    }
+    else{
+         ofLogNotice() <<"SceneManager::setupLevels << UNSUSCCESSFUL";
+    }
+   
 }
 
 void SceneManager::setupTimer()
@@ -164,7 +171,7 @@ void SceneManager::updateFbo()
         m_levels.begin();
             m_mySceneManager.draw();
         m_levels.end();
-         m_levels.draw();
+        m_levels.draw();
         ofDisableAlphaBlending();
         ofPopStyle();
     m_fbo.end();

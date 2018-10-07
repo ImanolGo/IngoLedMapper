@@ -12,6 +12,7 @@
 
 #include "ofxScene.h"
 #include "ofxColorGradient.h"
+#include "ofxShadertoy.h"
 
 class NoiseScene : public ofxScene {
     
@@ -55,8 +56,9 @@ private:
 private:
     
     ofColor                     m_color;
-    ofShader                    m_noiseShader;
+    ofShader                    m_shader;
     ofxColorGradient<ofColor>   m_gradient;
+    ofxShadertoy                 m_shadertoy;
 
 };
 

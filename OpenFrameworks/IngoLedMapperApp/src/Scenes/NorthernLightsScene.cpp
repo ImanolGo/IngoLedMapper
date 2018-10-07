@@ -29,7 +29,13 @@ void NorthernLightsScene::setup() {
 
 void NorthernLightsScene::setupShader()
 {
-    m_shader.load("shaders/shadersGL2/NorthernLights");
+    if(ofIsGLProgrammableRenderer()){
+        m_shadertoy.load("shaders/shadersGL3/NorthernLights.frag");
+    }
+    else{
+        m_shader.load("shaders/shadersGL2/NorthernLights");
+    }
+    
 }
 
 
@@ -55,16 +61,25 @@ void NorthernLightsScene::drawShader()
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
     auto parameters = AppManager::getInstance().getParticlesManager().getParameters();
     
-    //float speed  = ofMap(parameters.speed,0.0,5.0,0.0,1.0,true);
-    //auto color = AppManager::getInstance().getGuiManager().getColor(1);
-    
-    m_shader.begin();
-    //m_shader.setUniform3f("iColor",color.r/255.0,color.g/255.0,color.b/255.0);
-    //m_shader.setUniform3f("iResolution", ofGetWidth(), ofGetHeight(), 0.0);
-    m_shader.setUniform3f("iResolution", width, height, 0.0);
-    m_shader.setUniform1f("iTime", ofGetElapsedTimef()*parameters.speed);
+    if(ofIsGLProgrammableRenderer())
+    {
+        m_shadertoy.begin();
+        m_shadertoy.setUniform3f("iResolution", width, height, 0.0);
+        m_shadertoy.setUniform1f("iTime", ofGetElapsedTimef()*parameters.speed);
         ofDrawRectangle(0, 0, width, height);
-    m_shader.end();
+        m_shadertoy.end();
+    }
+    
+     else{
+         
+        m_shader.begin();
+        //m_shader.setUniform3f("iColor",color.r/255.0,color.g/255.0,color.b/255.0);
+        //m_shader.setUniform3f("iResolution", ofGetWidth(), ofGetHeight(), 0.0);
+        m_shader.setUniform3f("iResolution", width, height, 0.0);
+        m_shader.setUniform1f("iTime", ofGetElapsedTimef()*parameters.speed);
+            ofDrawRectangle(0, 0, width, height);
+        m_shader.end();
+     }
 }
 
 

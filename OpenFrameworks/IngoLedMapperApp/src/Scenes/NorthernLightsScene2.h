@@ -11,6 +11,7 @@
 #pragma once
 
 #include "ofxScene.h"
+#include "ofxShadertoy.h"
 
 class NorthernLightsScene2 : public ofxScene {
     
@@ -52,9 +53,11 @@ private:
 private:
     
     ofColor         m_color;
-    ofShader        m_shader;
     ofTexture       m_channel1;
     ofTexture       m_channel2;
+    
+    ofxShadertoy     m_shadertoy;
+    ofShader        m_shader;
 
 };
 

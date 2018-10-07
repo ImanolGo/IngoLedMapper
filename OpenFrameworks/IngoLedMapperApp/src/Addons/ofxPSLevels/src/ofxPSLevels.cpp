@@ -28,14 +28,26 @@ void ofxPSLevels::setup() {
     setup(ofGetWidth(), ofGetHeight());
 }
 
-void ofxPSLevels::setup(int w, int h){
+bool ofxPSLevels::setup(int w, int h){
     width = w;
     height = h;
     // allocate and clear fbo
     fbo.allocate(width, height);
     begin(); ofClear(0); end();
     // a shader handles all level adjustment
-    success = shader.load("shaders/ps/levels.vert", "shaders/ps/levels.frag");
+    
+    if(ofIsGLProgrammableRenderer()){
+       success = shader.load("shaders/shadersGL3/levels");
+    }
+    else{
+        
+        success = shader.load("shaders/shadersGL2/levels");
+    }
+    
+    return success;
+    
+    
+   
 }
 
 void ofxPSLevels::draw() {
@@ -45,9 +57,9 @@ void ofxPSLevels::draw() {
     }
     glPushMatrix();
     shader.begin();
-    glActiveTexture(GL_TEXTURE0);
-    fbo.getTextureReference().bind();
-    shader.setUniform1i("tex0", int(GLuint(0)));
+    //glActiveTexture(GL_TEXTURE0);
+   // fbo.getTexture().bind();
+   // shader.setUniform1i("tex0", int(GLuint(0)));
     // csb params
     shader.setUniform1f("contrast", contrast);
     shader.setUniform1f("saturation", saturation);
@@ -58,17 +70,20 @@ void ofxPSLevels::draw() {
     shader.setUniform1f("maxInput", maxInput);
     shader.setUniform1f("minOutput", minOutput);
     shader.setUniform1f("maxOutput", maxOutput);
-    // draw quad
-    glBegin(GL_QUADS);
-    glMultiTexCoord2f(GL_TEXTURE0, 0.0f, height); glVertex3f(0, height, 0);
-    glMultiTexCoord2f(GL_TEXTURE0, 0.0f, 0.0f); glVertex3f(0, 0, 0);
-    glMultiTexCoord2f(GL_TEXTURE0, width, 0.0f); glVertex3f(width, 0, 0);
-    glMultiTexCoord2f(GL_TEXTURE0, width, height); glVertex3f(width, height, 0);
-    glEnd();
+//    // draw quad
+//    glBegin(GL_QUADS);
+//    glMultiTexCoord2f(GL_TEXTURE0, 0.0f, height); glVertex3f(0, height, 0);
+//    glMultiTexCoord2f(GL_TEXTURE0, 0.0f, 0.0f); glVertex3f(0, 0, 0);
+//    glMultiTexCoord2f(GL_TEXTURE0, width, 0.0f); glVertex3f(width, 0, 0);
+//    glMultiTexCoord2f(GL_TEXTURE0, width, height); glVertex3f(width, height, 0);
+//    glEnd();
     // end shader
+    fbo.draw(0,0);
     shader.end();
-    fbo.getTextureReference().unbind();
+    
+   // fbo.getTexture().unbind();
     glPopMatrix();
+    
 }
 
 void ofxPSLevels::begin() {

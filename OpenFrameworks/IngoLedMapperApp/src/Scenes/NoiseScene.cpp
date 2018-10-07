@@ -32,11 +32,12 @@ void NoiseScene::setup() {
 void NoiseScene::setupNoiseShader()
 {
     if(ofIsGLProgrammableRenderer()){
-        m_noiseShader.load("shaders/shadersGL3/Noise");
+        m_shadertoy.load("shaders/shadersGL3/Noise.frag");
     }
     else{
-        m_noiseShader.load("shaders/shadersGL2/Noise");
+        m_shader.load("shaders/shadersGL2/Noise");
     }
+    
 }
 
 void NoiseScene::setupGradient()
@@ -83,20 +84,35 @@ void NoiseScene::drawNoise()
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
     auto parameters = AppManager::getInstance().getParticlesManager().getParameters();
     
-    float grain =  ofMap(parameters.num,0.0,800,0.0,10.0,true);
+    float grain =  ofMap(parameters.size,200.0,0.0,0.0,10.0,true);
     float speed  = ofMap(parameters.speed,0.0,10.0,0.0,2.0,true);
     float colorPct  = ofMap(sin(ofGetElapsedTimef()*speed),-1.0,1.0,0.0,1.0,true);
     
     //auto color = AppManager::getInstance().getGuiManager().getColor(1);
 
     ofColor color = m_gradient.getColorAtPercent(colorPct);
-    m_noiseShader.begin();
-    m_noiseShader.setUniform3f("iColor",color.r/255.0,color.g/255.0,color.b/255.0);
-    m_noiseShader.setUniform3f("iResolution", width, height, 0.0);
-    m_noiseShader.setUniform1f("iTime", ofGetElapsedTimef()*speed);
-    m_noiseShader.setUniform1f("inoise_grain", grain);
-        ofDrawRectangle(0, 0, width, height);
-    m_noiseShader.end();
+    
+        if(ofIsGLProgrammableRenderer())
+        {
+            m_shadertoy.begin();
+            m_shadertoy.setUniform3f("iResolution", width, height, 0.0);
+            m_shadertoy.setUniform3f("iColor",color.r/255.0,color.g/255.0,color.b/255.0);
+            m_shadertoy.setUniform1f("iTime", ofGetElapsedTimef()*speed);
+            m_shadertoy.setUniform1f("inoise_grain", grain);
+                ofDrawRectangle(0, 0, width, height);
+            m_shadertoy.end();
+        }
+    
+     else{
+         
+        m_shader.begin();
+        m_shader.setUniform3f("iColor",color.r/255.0,color.g/255.0,color.b/255.0);
+        m_shader.setUniform3f("iResolution", width, height, 0.0);
+        m_shader.setUniform1f("iTime", ofGetElapsedTimef()*speed);
+        m_shader.setUniform1f("inoise_grain", grain);
+            ofDrawRectangle(0, 0, width, height);
+        m_shader.end();
+     }
     
     
    // m_gradient.drawDebug(0,0, width, height);

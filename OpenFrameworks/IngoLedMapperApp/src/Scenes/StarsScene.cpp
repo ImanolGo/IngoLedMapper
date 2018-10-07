@@ -29,7 +29,13 @@ void StarsScene::setup() {
 
 void StarsScene::setupShader()
 {
-    m_shader.load("shaders/shadersGL2/Stars");
+    if(ofIsGLProgrammableRenderer()){
+        m_shadertoy.load("shaders/shadersGL3/Stars.frag");
+        m_shadertoy.setAdvanceTime(true);
+    }
+    else{
+        m_shader.load("shaders/shadersGL2/Stars");
+    }
 }
 
 
@@ -55,16 +61,27 @@ void StarsScene::drawShader()
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
     auto parameters = AppManager::getInstance().getParticlesManager().getParameters();
     
-    //float speed  = ofMap(parameters.speed,0.0,5.0,0.0,1.0,true);
-    //auto color = AppManager::getInstance().getGuiManager().getColor(1);
-    
-    m_shader.begin();
-    //m_shader.setUniform3f("iColor",color.r/255.0,color.g/255.0,color.b/255.0);
-    //m_shader.setUniform3f("iResolution", ofGetWidth(), ofGetHeight(), 0.0);
-    m_shader.setUniform3f("iResolution", width, height, 0.0);
-    m_shader.setUniform1f("iTime", ofGetElapsedTimef()*parameters.speed);
+    if(ofIsGLProgrammableRenderer())
+    {
+        m_shadertoy.begin();
+        m_shadertoy.setUniform3f("iResolution", width, height, 0.0);
+        m_shadertoy.setUniform1f("iTime", ofGetElapsedTimef()*parameters.speed);
         ofDrawRectangle(0, 0, width, height);
-    m_shader.end();
+        m_shadertoy.end();
+        
+        //m_shadertoy.draw(0, 0, width, height);
+    }
+    
+    else{
+        
+        m_shader.begin();
+        //m_shader.setUniform3f("iColor",color.r/255.0,color.g/255.0,color.b/255.0);
+        //m_shader.setUniform3f("iResolution", ofGetWidth(), ofGetHeight(), 0.0);
+        m_shader.setUniform3f("iResolution", width, height, 0.0);
+        m_shader.setUniform1f("iTime", ofGetElapsedTimef()*parameters.speed);
+        ofDrawRectangle(0, 0, width, height);
+        m_shader.end();
+    }
 }
 
 

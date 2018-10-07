@@ -32,6 +32,7 @@
 		0851F5712121E97400764878 /* Syphon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0851F5702121E97400764878 /* Syphon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		08A757FA216A1D61006854BE /* StarsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08A757F9216A1D61006854BE /* StarsScene.cpp */; };
 		08A757FE216A34FD006854BE /* NorthernLightsScene2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08A757FC216A34FD006854BE /* NorthernLightsScene2.cpp */; };
+		08A75803216A455D006854BE /* ofxShadertoy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08A75801216A455D006854BE /* ofxShadertoy.cpp */; };
 		0C8E6109528865C738BFD818 /* SyphonNameboundClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A78388489306C3277E37BA4F /* SyphonNameboundClient.m */; };
 		106B97E658138710B59773AE /* GodRaysPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE19FA45FB564FF3B31F7717 /* GodRaysPass.cpp */; };
 		1835B306208122634C04CA79 /* ModelManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2958AE46C53B67E9739A17 /* ModelManager.cpp */; };
@@ -190,6 +191,8 @@
 		08A757F9216A1D61006854BE /* StarsScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StarsScene.cpp; path = Scenes/StarsScene.cpp; sourceTree = "<group>"; };
 		08A757FC216A34FD006854BE /* NorthernLightsScene2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NorthernLightsScene2.cpp; path = Scenes/NorthernLightsScene2.cpp; sourceTree = "<group>"; };
 		08A757FD216A34FD006854BE /* NorthernLightsScene2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NorthernLightsScene2.h; path = Scenes/NorthernLightsScene2.h; sourceTree = "<group>"; };
+		08A75801216A455D006854BE /* ofxShadertoy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxShadertoy.cpp; path = Addons/ofxShadertoy/src/ofxShadertoy.cpp; sourceTree = "<group>"; };
+		08A75802216A455D006854BE /* ofxShadertoy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxShadertoy.h; path = Addons/ofxShadertoy/src/ofxShadertoy.h; sourceTree = "<group>"; };
 		09BB1D7613A1F9D8E8B11D7A /* KeyboardManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = KeyboardManager.h; path = src/I0/KeyboardManager.h; sourceTree = SOURCE_ROOT; };
 		09F8F2DF1D53E65319F30B96 /* LightManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = LightManager.cpp; path = src/Engine/3D/LightManager.cpp; sourceTree = SOURCE_ROOT; };
 		0ED75BB7C2FE645940BF27BA /* License.txt */ = {isa = PBXFileReference; explicitFileType = file; fileEncoding = 30; name = License.txt; path = src/Addons/ofxSyphon/License.txt; sourceTree = SOURCE_ROOT; };
@@ -480,6 +483,23 @@
 				0851F56E2121E95B00764878 /* Syphon.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		08A757FF216A4530006854BE /* ofxShaderToy */ = {
+			isa = PBXGroup;
+			children = (
+				08A75800216A4540006854BE /* src */,
+			);
+			name = ofxShaderToy;
+			sourceTree = "<group>";
+		};
+		08A75800216A4540006854BE /* src */ = {
+			isa = PBXGroup;
+			children = (
+				08A75801216A455D006854BE /* ofxShadertoy.cpp */,
+				08A75802216A455D006854BE /* ofxShadertoy.h */,
+			);
+			name = src;
 			sourceTree = "<group>";
 		};
 		0D2C0FD94F0CF315745D1C66 /* Syphon */ = {
@@ -797,6 +817,7 @@
 		AD642137CCDF61FB3E6CCEA2 /* Addons */ = {
 			isa = PBXGroup;
 			children = (
+				08A757FF216A4530006854BE /* ofxShaderToy */,
 				083B73312154E3B900499058 /* ofxColorGradient */,
 				08451780212491F500D845C0 /* ofxVectorField */,
 				08451771212484AB00D845C0 /* ofxEasing */,
@@ -1083,6 +1104,7 @@
 				333113E71EDD596780D5FC0C /* ofxBlur.cpp in Sources */,
 				08A757FE216A34FD006854BE /* NorthernLightsScene2.cpp in Sources */,
 				00E7693985C6746E94870C0C /* history.md in Sources */,
+				08A75803216A455D006854BE /* ofxShadertoy.cpp in Sources */,
 				E49699C1F3B736D5847985D8 /* license.txt in Sources */,
 				6BE84BED9B493CA514480EF3 /* ofxaddons_thumbnail.png in Sources */,
 				040259BAD9E7E5CDA062C1FF /* Verdana.ttf in Sources */,
