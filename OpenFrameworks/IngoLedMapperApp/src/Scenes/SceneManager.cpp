@@ -60,6 +60,10 @@ void SceneManager::createScenes()
     scene = ofPtr<ofxScene> (new VectorFieldScene("HERBSTMORGEN"));
     m_mySceneManager.addScene(scene);
     
+    //Create AUTUMN Scene
+    scene = ofPtr<ofxScene> (new AutumnScene("AUTUMN"));
+    m_mySceneManager.addScene(scene);
+    
     //Create BERGEN
     scene = ofPtr<ofxScene> (new NoiseScene("BERGEN"));
     m_mySceneManager.addScene(scene);

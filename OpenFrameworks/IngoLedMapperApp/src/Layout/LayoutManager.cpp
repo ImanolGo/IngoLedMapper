@@ -201,7 +201,7 @@ void LayoutManager::updateSyphon()
 {
     string name = "Scenes";
     
-    m_syphonServer.publishTexture(&m_fbos[name]->getTexture());
+    m_syphonServer.publishFBO(m_fbos[name].get());
 }
 
 void LayoutManager::updateLedsFbo()

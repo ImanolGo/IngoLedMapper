@@ -21,4 +21,5 @@
 #include "NorthernLightsScene.h"
 #include "NorthernLightsScene2.h"
 #include "StarsScene.h"
+#include "AutumnScene.h"
 
