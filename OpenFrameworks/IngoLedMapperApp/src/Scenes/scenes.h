@@ -22,4 +22,5 @@
 #include "NorthernLightsScene2.h"
 #include "StarsScene.h"
 #include "AutumnScene.h"
+#include "ColorGradientScene.h"
 

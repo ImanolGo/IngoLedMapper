@@ -30,11 +30,11 @@ void StarsScene::setup() {
 void StarsScene::setupShader()
 {
     if(ofIsGLProgrammableRenderer()){
-        m_shadertoy.load("shaders/shadersGL3/Stars.frag");
+        m_shadertoy.load("shaders/shadersGL3/Stars2.frag");
         m_shadertoy.setAdvanceTime(true);
     }
     else{
-        m_shader.load("shaders/shadersGL2/Stars");
+        m_shader.load("shaders/shadersGL2/Stars2");
     }
 }
 

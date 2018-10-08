@@ -29,6 +29,7 @@
 		0845177F2124918100D845C0 /* NoiseManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0845177B2124918100D845C0 /* NoiseManager.cpp */; };
 		084517842124920600D845C0 /* ofxVectorField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 084517832124920600D845C0 /* ofxVectorField.cpp */; };
 		08550B76216B43D500FEB867 /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0851F56E2121E95B00764878 /* Syphon.framework */; };
+		08550B7A216B6DE600FEB867 /* ColorGradientScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08550B78216B6DE500FEB867 /* ColorGradientScene.cpp */; };
 		08A757FA216A1D61006854BE /* StarsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08A757F9216A1D61006854BE /* StarsScene.cpp */; };
 		08A757FE216A34FD006854BE /* NorthernLightsScene2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08A757FC216A34FD006854BE /* NorthernLightsScene2.cpp */; };
 		08A75803216A455D006854BE /* ofxShadertoy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08A75801216A455D006854BE /* ofxShadertoy.cpp */; };
@@ -186,6 +187,8 @@
 		084517822124920600D845C0 /* ofxVectorField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxVectorField.h; path = Addons/ofxVectorField/src/ofxVectorField.h; sourceTree = "<group>"; };
 		084517832124920600D845C0 /* ofxVectorField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxVectorField.cpp; path = Addons/ofxVectorField/src/ofxVectorField.cpp; sourceTree = "<group>"; };
 		0851F56E2121E95B00764878 /* Syphon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Syphon.framework; path = src/Addons/ofxSyphon/libs/Syphon/lib/osx/Syphon.framework; sourceTree = "<group>"; };
+		08550B78216B6DE500FEB867 /* ColorGradientScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ColorGradientScene.cpp; path = Scenes/ColorGradientScene.cpp; sourceTree = "<group>"; };
+		08550B79216B6DE600FEB867 /* ColorGradientScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorGradientScene.h; path = Scenes/ColorGradientScene.h; sourceTree = "<group>"; };
 		08A757F8216A1D60006854BE /* StarsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StarsScene.h; path = Scenes/StarsScene.h; sourceTree = "<group>"; };
 		08A757F9216A1D61006854BE /* StarsScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StarsScene.cpp; path = Scenes/StarsScene.cpp; sourceTree = "<group>"; };
 		08A757FC216A34FD006854BE /* NorthernLightsScene2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NorthernLightsScene2.cpp; path = Scenes/NorthernLightsScene2.cpp; sourceTree = "<group>"; };
@@ -427,6 +430,8 @@
 				08A757FD216A34FD006854BE /* NorthernLightsScene2.h */,
 				08A757F9216A1D61006854BE /* StarsScene.cpp */,
 				08A757F8216A1D60006854BE /* StarsScene.h */,
+				08550B78216B6DE500FEB867 /* ColorGradientScene.cpp */,
+				08550B79216B6DE600FEB867 /* ColorGradientScene.h */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -859,14 +864,6 @@
 		AF4FDCF7E02C59FCC5FE54A2 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				0845177B2124918100D845C0 /* NoiseManager.cpp */,
-				084517752124918000D845C0 /* NoiseManager.h */,
-				084517742124918000D845C0 /* ParticlesManager.cpp */,
-				0845177A2124918100D845C0 /* ParticlesManager.h */,
-				084517762124918000D845C0 /* VectorFieldParticle.cpp */,
-				084517772124918000D845C0 /* VectorFieldParticle.h */,
-				084517792124918000D845C0 /* VectorFieldVisual.cpp */,
-				084517782124918000D845C0 /* VectorFieldVisual.h */,
 				5056FC61E30B9810903B814D /* AppManager.cpp */,
 				D26C09D837E4FD6CBDBE2B8C /* AppManager.h */,
 				291E4F2ABACB79F5B36AC7F4 /* IngoLedMapperApp.cpp */,
@@ -890,6 +887,14 @@
 		C02C33831C66F04FEBAE29DE /* Visuals */ = {
 			isa = PBXGroup;
 			children = (
+				0845177B2124918100D845C0 /* NoiseManager.cpp */,
+				084517752124918000D845C0 /* NoiseManager.h */,
+				084517742124918000D845C0 /* ParticlesManager.cpp */,
+				0845177A2124918100D845C0 /* ParticlesManager.h */,
+				084517762124918000D845C0 /* VectorFieldParticle.cpp */,
+				084517772124918000D845C0 /* VectorFieldParticle.h */,
+				084517792124918000D845C0 /* VectorFieldVisual.cpp */,
+				084517782124918000D845C0 /* VectorFieldVisual.h */,
 				42AE41179815462906180DEC /* myEasyCam.cpp */,
 				778629BE32D842147D5E8F2C /* myEasyCam.h */,
 				2990685E1D17096D1F9B64CF /* VideoManager.cpp */,
@@ -1152,6 +1157,7 @@
 				809B0D0AA188CF0F15F4D0E2 /* ConvolutionPass.cpp in Sources */,
 				65E588AA75CD1992180164AC /* DofAltPass.cpp in Sources */,
 				EED88B9908EEF9CF82D2EA5D /* DofPass.cpp in Sources */,
+				08550B7A216B6DE600FEB867 /* ColorGradientScene.cpp in Sources */,
 				94A5BE8D9E5D956B6F719756 /* EdgePass.cpp in Sources */,
 				F21D9E004F4E33C8FEBB6BC8 /* FakeSSSPass.cpp in Sources */,
 				084517842124920600D845C0 /* ofxVectorField.cpp in Sources */,

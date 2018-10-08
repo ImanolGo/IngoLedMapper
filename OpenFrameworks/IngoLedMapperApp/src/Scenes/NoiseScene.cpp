@@ -92,16 +92,16 @@ void NoiseScene::drawNoise()
 
     ofColor color = m_gradient.getColorAtPercent(colorPct);
     
-        if(ofIsGLProgrammableRenderer())
-        {
-            m_shadertoy.begin();
-            m_shadertoy.setUniform3f("iResolution", width, height, 0.0);
-            m_shadertoy.setUniform3f("iColor",color.r/255.0,color.g/255.0,color.b/255.0);
-            m_shadertoy.setUniform1f("iTime", ofGetElapsedTimef()*speed);
-            m_shadertoy.setUniform1f("inoise_grain", grain);
-                ofDrawRectangle(0, 0, width, height);
-            m_shadertoy.end();
-        }
+    if(ofIsGLProgrammableRenderer())
+    {
+        m_shadertoy.begin();
+        m_shadertoy.setUniform3f("iResolution", width, height, 0.0);
+        m_shadertoy.setUniform3f("iColor",color.r/255.0,color.g/255.0,color.b/255.0);
+        m_shadertoy.setUniform1f("iTime", ofGetElapsedTimef()*speed);
+        m_shadertoy.setUniform1f("inoise_grain", grain);
+            ofDrawRectangle(0, 0, width, height);
+        m_shadertoy.end();
+    }
     
      else{
          

@@ -11,7 +11,7 @@
 
 #include "NoiseManager.h"
 #include "AppManager.h"
-
+#include "ofxFboBlur.h"
 
 NoiseManager::NoiseManager(): Manager(), m_noiseResolution(255)
 {

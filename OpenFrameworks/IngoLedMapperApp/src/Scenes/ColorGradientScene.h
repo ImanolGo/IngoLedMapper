@@ -1,5 +1,5 @@
 /*
- *  CloudScene.h
+ *  ColorGradientScene.h
  *  IngoLedMapperApp
  *
  *  Created by Imanol Gomez on 15/08/18.
@@ -11,17 +11,20 @@
 #pragma once
 
 #include "ofxScene.h"
+#include "ofxColorGradient.h"
+#include "ofxFboBlur.h"
 #include "ofxShadertoy.h"
 
-class CloudScene : public ofxScene {
+
+class ColorGradientScene : public ofxScene {
     
 public:
     
     //! Constructor
-    CloudScene(std::string name);
+    ColorGradientScene(std::string name);
     
     //! Destructor
-    ~CloudScene();
+    ~ColorGradientScene();
     
     //! Set up the scene
     void setup();
@@ -46,19 +49,28 @@ public:
     
 private:
     
+    void setupShader();
+    
     void setupFbo();
     
-    void setupShader();
+    void setupGradient();
+    
+    void setupBlur();
+    
+    void updateBlur();
+    
+    void drawGradient();
     
     void drawShader();
     
 private:
     
-    ofColor         m_color;
-    ofFbo           m_fbo;
-    ofShader        m_shader;
-    ofxShadertoy    m_shadertoy;
-
+    ofColor                     m_color;
+    ofShader                    m_shader;
+    ofxColorGradient<ofColor>   m_gradient;
+    ofFbo            m_fbo;
+    ofxFboBlur       m_blur;
+    ofxShadertoy     m_shadertoy;
 
 };
 

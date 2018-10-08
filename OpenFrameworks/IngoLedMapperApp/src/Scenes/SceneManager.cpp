@@ -64,14 +64,18 @@ void SceneManager::createScenes()
     scene = ofPtr<ofxScene> (new AutumnScene("AUTUMN"));
     m_mySceneManager.addScene(scene);
     
+    //Create CLOUDS Scene
+    scene = ofPtr<ofxScene> (new CloudScene("CLOUDS"));
+    m_mySceneManager.addScene(scene);
+    
     //Create BERGEN
     scene = ofPtr<ofxScene> (new NoiseScene("BERGEN"));
     m_mySceneManager.addScene(scene);
     
     //Create STERNE
-//    auto vectorScene = ofPtr<VectorFieldScene> (new VectorFieldScene("STERNE"));
-//    vectorScene->setAdditiveBlend(true);
-//    m_mySceneManager.addScene(vectorScene);
+    auto vectorScene = ofPtr<VectorFieldScene> (new VectorFieldScene("STERNE"));
+    vectorScene->setAdditiveBlend(true);
+    m_mySceneManager.addScene(vectorScene);
 
     //Create NORDLICHT
     scene = ofPtr<ofxScene> (new NorthernLightsScene("NORDLICHT"));
@@ -85,6 +89,10 @@ void SceneManager::createScenes()
     
     //Create STERNE
     scene = ofPtr<ofxScene> (new StarsScene("STERNE"));;
+    m_mySceneManager.addScene(scene);
+    
+    //Create GRADIENT
+    scene = ofPtr<ofxScene> (new ColorGradientScene("GRADIENT"));
     m_mySceneManager.addScene(scene);
     
     //Create GRUEN

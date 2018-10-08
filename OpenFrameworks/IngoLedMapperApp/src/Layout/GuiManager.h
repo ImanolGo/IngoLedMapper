@@ -91,6 +91,8 @@ public:
     
     void onResetColors();
     
+    float getBlur() const{return m_blur;}
+    
 private:
     
     void setupGuiParameters();
