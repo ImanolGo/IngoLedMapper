@@ -110,7 +110,7 @@
                 <item>fixture:line 7.6</item>
                 <item>fixture:line 7.7</item>
                 <item>fixture:line 7.8</item>
-                <item>content:main.py</item>
+                <item>content:mainSunset.py</item>
             </items>
             <parameters>
                 <is_3D type="bool">0</is_3D>
@@ -1922,7 +1922,7 @@
             <transformation type="matrix4x4">0.367166,        0,        0,        0&#x0A;       0,  2.18304,        0,        0&#x0A;       0,        0,        1,        0&#x0A;-0.023265, -1.04042,        0,        1</transformation>
         </content>
         <content>
-            <name>main.py</name>
+            <name>mainSunset.py</name>
             <type>PythonProgram</type>
             <parameters>
                 <enabled type="bool">1</enabled>
@@ -1933,12 +1933,9 @@
                     <width type="float">1</width>
                     <height type="float">1</height>
                 </projection_parameters>
-                <python_script type="filepath">$PROJECT_DIR/main.py</python_script>
+                <python_script type="filepath">$PROJECT_DIR/mainSunset.py</python_script>
                 <params>
                     <gamma type="float">0.7</gamma>
-                    <enableSunset type="bool">1</enableSunset>
-                    <enableClouds type="bool">0</enableClouds>
-                    <enableAurora type="bool">0</enableAurora>
                 </params>
             </parameters>
             <transformation type="matrix4x4">-0.192493,   -2.052,        0,        0&#x0A;0.697213, -0.0654037,        0,        0&#x0A;       0,        0,        1,        0&#x0A;-0.0493352, -1.02707,        0,        1</transformation>

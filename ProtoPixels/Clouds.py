@@ -19,11 +19,11 @@ class Clouds:
         self.clouds_color = ofColor(255, 255, 255)
         self.speed = 0.1
         self.number = 0.8
-        self.contrast = 1.0
+        self.contrast = 1.5
         self.saturation = 1.0
         self.brightness = 1.0
         self.gamma = 1.0
-        self.period = 30000
+        self.period = 300
         
         self.setup()
 
@@ -47,7 +47,7 @@ class Clouds:
         self.number = self.translate(angle, -1.0,1.0, 0.2, 0.9)
 
     def updateAlpha(self):
-        self.currentAlpha = self.currentAlpha + (self.targetAlpha - self.currentAlpha)*0.05
+        self.currentAlpha = self.currentAlpha + (self.targetAlpha - self.currentAlpha)*0.02
 
     def updateFbo(self):
         self.fbo.begin()
@@ -76,7 +76,7 @@ class Clouds:
 
             self.shader.begin()
             self.shader.setUniform1f('alpha',  self.currentAlpha)
-            self.shader.setUniform1f('iTime', ofGetElapsedTimef()*self.speed*0.5)
+            self.shader.setUniform1f('iTime', ofGetElapsedTimef()*self.speed*0.4)
             self.shader.setUniform3f('iResolution', float(self.width), float(self.height),0.0)
             self.shader.setUniform1f('cloudcover', self.number)
             self.shader.setUniform1f('contrast',  self.contrast)

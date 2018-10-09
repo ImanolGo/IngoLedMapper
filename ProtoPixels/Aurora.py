@@ -25,7 +25,7 @@ class Aurora:
         self.saturation = 1.0
         self.brightness = 1.0
         self.gamma = 1.0
-        self.period = 10
+        self.period = 90
         
         self.setup()
 
@@ -65,7 +65,7 @@ class Aurora:
 
 
     def update(self):
-        self.updateNumber()
+        self.updateSaturation()
         self.updateAlpha()
         self.updateFbo()
 
@@ -75,12 +75,14 @@ class Aurora:
         valueScaled = float(value -leftMin)/float(leftSpan)
         return rightMin + valueScaled*rightSpan
 
-    def updateNumber(self):
+    def updateSaturation(self):
         angle =  np.sin(ofGetElapsedTimef()*np.pi/self.period)
-        self.number = self.translate(angle, -1.0,1.0, 0.2, 0.9)
+        #print angle 
+        self.saturation = self.translate(angle, -1.0,1.0, 0.3, 1.5)
+        #print self.saturation 
 
     def updateAlpha(self):
-        self.currentAlpha = self.currentAlpha + (self.targetAlpha - self.currentAlpha)*0.05
+        self.currentAlpha = self.currentAlpha + (self.targetAlpha - self.currentAlpha)*0.02
 
     def updateFbo(self):
         self.fbo.begin()
@@ -95,9 +97,9 @@ class Aurora:
         if self.shaderNoise.isLoaded():
             self.shaderNoise.begin()
             self.shaderNoise.setUniform1f('alpha',  self.currentAlpha)
-            self.shaderNoise.setUniform1f('amplitude', 5)
+            self.shaderNoise.setUniform1f('amplitude', 8)
             self.shaderNoise.setUniform1f('time', ofGetElapsedTimef()*0.2)
-            self.shaderNoise.setUniform1f('frequency', 1.6)
+            self.shaderNoise.setUniform1f('frequency', 1.0)
             self.shaderNoise.setUniform1f('speed', 0.7)
             self.fbo.draw(0,0)
        
@@ -180,6 +182,30 @@ class Aurora:
         
            #define TAU 6.2831853071
 
+            #define GammaCorrection(color, gamma)                               vec3( pow(color.r, 1.0 / gamma), pow(color.g, 1.0 / gamma), pow(color.b, 1.0 / gamma) )
+            #define LevelsControlInputRange(color, minInput, maxInput)              min(max(color - vec3(minInput), vec3(0.0)) / (vec3(maxInput) - vec3(minInput)), vec3(1.0))
+            #define LevelsControlInput(color, minInput, gamma, maxInput)                GammaCorrection(LevelsControlInputRange(color, minInput, maxInput), gamma)
+            #define LevelsControlOutputRange(color, minOutput, maxOutput)           mix(vec3(minOutput), vec3(maxOutput), color)
+            #define LevelsControl(color, minInput, gamma, maxInput, minOutput, maxOutput)   LevelsControlOutputRange(LevelsControlInput(color, minInput, gamma, maxInput), minOutput, maxOutput)
+
+            vec3 ContrastSaturationBrightness(vec3 color, float brt, float sat, float con)
+            {
+                // Increase or decrease theese values to adjust r, g and b color channels seperately
+                const float AvgLumR = 0.5;
+                const float AvgLumG = 0.5;
+                const float AvgLumB = 0.5;
+                
+                const vec3 LumCoeff = vec3(0.2125, 0.7154, 0.0721);
+                
+                vec3 AvgLumin = vec3(AvgLumR, AvgLumG, AvgLumB);
+                vec3 brtColor = color * brt;
+                vec3 intensity = vec3(dot(brtColor, LumCoeff));
+                vec3 satColor = mix(intensity, brtColor, sat);
+                vec3 conColor = mix(AvgLumin, satColor, con);
+                return conColor;
+            }
+
+
             void mainImage(out vec4 fragColor, in vec2 fragCoord) {
                 vec2 uv = fragCoord.xy / iResolution.xy;
                 
@@ -204,6 +230,9 @@ class Aurora:
                 float s = mix(r.x, (sin((iTime * 2.5 + 60.0) * r.y) * 0.5 + 0.5) * ((r.y * r.y) * (r.y * r.y)), 0.04); 
                 //color += pow(s, 70.0) * (1.0 - v);
                 
+                color =  ContrastSaturationBrightness(color, brightness, saturation, contrast);
+                color = LevelsControl(color, minInput, gamma, maxInput, minOutput, maxOutput);
+
                 fragColor.rgb = color;
                 fragColor.a = alpha;
             }

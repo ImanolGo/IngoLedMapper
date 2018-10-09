@@ -5,6 +5,7 @@
             <name>root</name>
             <items>
                 <item>content:test</item>
+                <item>content:shader.py</item>
                 <item>content:color</item>
                 <item>fixture:line 1.1</item>
                 <item>fixture:line 1.2</item>
@@ -110,7 +111,7 @@
                 <item>fixture:line 7.6</item>
                 <item>fixture:line 7.7</item>
                 <item>fixture:line 7.8</item>
-                <item>content:main.py</item>
+                <item>content:Clouds.mov</item>
             </items>
             <parameters>
                 <is_3D type="bool">0</is_3D>
@@ -1904,6 +1905,23 @@
             <transformation type="matrix4x4">0.367166,        0,        0,        0&#x0A;       0, 0.567311,        0,        0&#x0A;       0,        0,        1,        0&#x0A;0.00263999,  -0.2706,        0,        1</transformation>
         </content>
         <content>
+            <name>shader.py</name>
+            <type>PythonProgram</type>
+            <parameters>
+                <enabled type="bool">1</enabled>
+                <blend_mode type="stringoption">alpha</blend_mode>
+                <color_levels type="color">255, 255, 255, 255</color_levels>
+                <projection_type type="stringoption">flatsimple</projection_type>
+                <projection_parameters>
+                    <width type="float">1</width>
+                    <height type="float">1</height>
+                </projection_parameters>
+                <python_script type="filepath">/Users/sebastianhepting/Documents/ProtoPixel-Create-2.3.0.2018-09-07-8c616b47/examples/scripting/shader.py</python_script>
+                <params></params>
+            </parameters>
+            <transformation type="matrix4x4">0.348686,        0,        0,        0&#x0A;       0,   2.1624,        0,        0&#x0A;       0,        0,        1,        0&#x0A;-0.00395999, -1.01112,        0,        1</transformation>
+        </content>
+        <content>
             <name>color</name>
             <type>py:color</type>
             <parameters>
@@ -1922,8 +1940,8 @@
             <transformation type="matrix4x4">0.367166,        0,        0,        0&#x0A;       0,  2.18304,        0,        0&#x0A;       0,        0,        1,        0&#x0A;-0.023265, -1.04042,        0,        1</transformation>
         </content>
         <content>
-            <name>main.py</name>
-            <type>PythonProgram</type>
+            <name>Clouds.mov</name>
+            <type>py:video</type>
             <parameters>
                 <enabled type="bool">1</enabled>
                 <blend_mode type="stringoption">alpha</blend_mode>
@@ -1933,15 +1951,15 @@
                     <width type="float">1</width>
                     <height type="float">1</height>
                 </projection_parameters>
-                <python_script type="filepath">$PROJECT_DIR/main.py</python_script>
                 <params>
-                    <gamma type="float">0.7</gamma>
-                    <enableSunset type="bool">1</enableSunset>
-                    <enableClouds type="bool">0</enableClouds>
-                    <enableAurora type="bool">0</enableAurora>
+                    <video_path type="filepath">$PROJECT_DIR/Clouds.mov</video_path>
+                    <position type="float">0.0578118</position>
+                    <loop type="bool">1</loop>
+                    <autoplay type="bool">1</autoplay>
+                    <volume type="float">1</volume>
                 </params>
             </parameters>
-            <transformation type="matrix4x4">-0.192493,   -2.052,        0,        0&#x0A;0.697213, -0.0654037,        0,        0&#x0A;       0,        0,        1,        0&#x0A;-0.0493352, -1.02707,        0,        1</transformation>
+            <transformation type="matrix4x4">0.00702366, -2.05951,        0,        0&#x0A; 1.15425, 0.00393641,        0,        0&#x0A;       0,        0,        1,        0&#x0A;-0.00491419, -1.02706,        0,        1</transformation>
         </content>
     </contents>
     <groups></groups>

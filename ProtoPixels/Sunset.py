@@ -26,7 +26,7 @@ class Sunset:
         self.updateFbo()
 
     def updateAlpha(self):
-        self.currentAlpha = self.currentAlpha + (self.targetAlpha - self.currentAlpha)*0.05
+        self.currentAlpha = self.currentAlpha + (self.targetAlpha - self.currentAlpha)*0.02
        # print self.currentAlpha 
 
     def updateFbo(self):
