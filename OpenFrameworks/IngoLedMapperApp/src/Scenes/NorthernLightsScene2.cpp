@@ -58,7 +58,6 @@ void NorthernLightsScene2::setupShader()
     else{
         m_shader.load("shaders/shadersGL2/AuroraBorealis");
     }
-    
 }
 
 

@@ -135,8 +135,8 @@ void ofApp::audioIn(float * input, int bufferSize, int nChannels){
     // this is how we get the root of rms :)
     curVol = sqrt( curVol );
     
-    smoothedVol *= 0.97;
-    smoothedVol += 0.03 * curVol;
+    smoothedVol *= 0.98;
+    smoothedVol += 0.02 * curVol;
     
     bufferCounter++;
     

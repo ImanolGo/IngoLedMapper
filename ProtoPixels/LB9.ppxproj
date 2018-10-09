@@ -152,6 +152,7 @@
                 <item>content:manager.py</item>
                 <item>content:syphon 0</item>
                 <item>content:color</item>
+                <item>content:main.py</item>
             </items>
             <parameters>
                 <is_3D type="bool">0</is_3D>
@@ -2668,7 +2669,7 @@
             <name>color</name>
             <type>py:color</type>
             <parameters>
-                <enabled type="bool">0</enabled>
+                <enabled type="bool">1</enabled>
                 <blend_mode type="stringoption">alpha</blend_mode>
                 <color_levels type="color">255, 255, 255, 255</color_levels>
                 <projection_type type="stringoption">flatsimple</projection_type>
@@ -2681,6 +2682,28 @@
                 </params>
             </parameters>
             <transformation type="matrix4x4"> 2.56432,        0,        0,        0&#x0A;       0,  1.83562,        0,        0&#x0A;       0,        0,        1,        0&#x0A;-0.830016, 0.0918719,        0,        1</transformation>
+        </content>
+        <content>
+            <name>main.py</name>
+            <type>PythonProgram</type>
+            <parameters>
+                <enabled type="bool">1</enabled>
+                <blend_mode type="stringoption">alpha</blend_mode>
+                <color_levels type="color">255, 255, 255, 255</color_levels>
+                <projection_type type="stringoption">flatsimple</projection_type>
+                <projection_parameters>
+                    <width type="float">1</width>
+                    <height type="float">1</height>
+                </projection_parameters>
+                <python_script type="filepath">$PROJECT_DIR/main.py</python_script>
+                <params>
+                    <gamma type="float">0.7</gamma>
+                    <enableSunset type="bool">1</enableSunset>
+                    <enableClouds type="bool">1</enableClouds>
+                    <enableAurora type="bool">1</enableAurora>
+                </params>
+            </parameters>
+            <transformation type="matrix4x4">-0.840624, -1.91619,        0,        0&#x0A; 1.38933, -0.609494,        0,        0&#x0A;       0,        0,        1,        0&#x0A;-0.28512, 0.0823679,        0,        1</transformation>
         </content>
     </contents>
     <groups></groups>
