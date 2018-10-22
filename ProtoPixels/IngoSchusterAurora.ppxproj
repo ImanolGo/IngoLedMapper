@@ -111,6 +111,8 @@
                 <item>fixture:line 7.7</item>
                 <item>fixture:line 7.8</item>
                 <item>content:mainAurora.py</item>
+                <item>content:iChannel0.png</item>
+                <item>content:iChannel1.png</item>
             </items>
             <parameters>
                 <is_3D type="bool">0</is_3D>
@@ -1935,10 +1937,46 @@
                 </projection_parameters>
                 <python_script type="filepath">$PROJECT_DIR/mainAurora.py</python_script>
                 <params>
-                    <gamma type="float">0.7</gamma>
+                    <gamma type="float">0.9</gamma>
                 </params>
             </parameters>
-            <transformation type="matrix4x4">-0.192493,   -2.052,        0,        0&#x0A;0.697213, -0.0654037,        0,        0&#x0A;       0,        0,        1,        0&#x0A;-0.0493352, -1.02707,        0,        1</transformation>
+            <transformation type="matrix4x4">-0.0712177, -2.10317,        0,        0&#x0A;0.670372, -0.0227001,        0,        0&#x0A;       0,        0,        1,        0&#x0A;0.0350128, -1.03644,        0,        1</transformation>
+        </content>
+        <content>
+            <name>iChannel0.png</name>
+            <type>py:image</type>
+            <parameters>
+                <enabled type="bool">1</enabled>
+                <blend_mode type="stringoption">alpha</blend_mode>
+                <color_levels type="color">255, 255, 255, 255</color_levels>
+                <projection_type type="stringoption">flatsimple</projection_type>
+                <projection_parameters>
+                    <width type="float">1</width>
+                    <height type="float">1</height>
+                </projection_parameters>
+                <params>
+                    <image_path type="filepath">$PROJECT_DIR/iChannel0.png</image_path>
+                </params>
+            </parameters>
+            <transformation type="matrix4x4">     0.2,        0,        0,        0&#x0A;       0,      0.2,        0,        0&#x0A;       0,        0,        1,        0&#x0A; 0.12012,  0.24288,        0,        1</transformation>
+        </content>
+        <content>
+            <name>iChannel1.png</name>
+            <type>py:image</type>
+            <parameters>
+                <enabled type="bool">1</enabled>
+                <blend_mode type="stringoption">alpha</blend_mode>
+                <color_levels type="color">255, 255, 255, 255</color_levels>
+                <projection_type type="stringoption">flatsimple</projection_type>
+                <projection_parameters>
+                    <width type="float">1</width>
+                    <height type="float">1</height>
+                </projection_parameters>
+                <params>
+                    <image_path type="filepath">$PROJECT_DIR/iChannel1.png</image_path>
+                </params>
+            </parameters>
+            <transformation type="matrix4x4">     0.2,        0,        0,        0&#x0A;       0,      0.2,        0,        0&#x0A;       0,        0,        1,        0&#x0A;-0.14256,  0.18612,        0,        1</transformation>
         </content>
     </contents>
     <groups></groups>

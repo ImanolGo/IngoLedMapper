@@ -28,7 +28,7 @@ fboVisuals = ofFbo()
 shader = ofShader()
 mode = 0
 
-content.add_parameter("gamma", min=0.0, max=1.0, value=0.7)
+content.add_parameter("gamma", min=0.0, max=1.0, value=0.9)
 
 
 def setup():

@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxOsc.h"
+#include "ofxGui.h"
 
 //#define HOST "localhost"
 #define HOST "192.168.8.1"
@@ -43,5 +44,7 @@ class ofApp : public ofBaseApp{
     
         ofTrueTypeFont font;
         ofxOscSender sender;
+        ofxPanel gui;
+     ofxFloatSlider volume;
 		
 };

@@ -1938,7 +1938,7 @@
                     <gamma type="float">0.7</gamma>
                 </params>
             </parameters>
-            <transformation type="matrix4x4">-0.192493,   -2.052,        0,        0&#x0A;0.697213, -0.0654037,        0,        0&#x0A;       0,        0,        1,        0&#x0A;-0.0493352, -1.02707,        0,        1</transformation>
+            <transformation type="matrix4x4">-0.0114859, -2.06098,        0,        0&#x0A; 0.37332, -0.00208052,        0,        0&#x0A;       0,        0,        1,        0&#x0A;-0.0033992, -1.02879,        0,        1</transformation>
         </content>
     </contents>
     <groups></groups>

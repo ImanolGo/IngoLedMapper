@@ -34,7 +34,7 @@ fboVisuals = ofFbo()
 shader = ofShader()
 mode = 0
 
-content.add_parameter("gamma", min=0.0, max=1.0, value=0.7)
+content.add_parameter("gamma", min=0.0, max=1.0, value=0.9)
 content.add_parameter("enableSunset", value=True)
 content.add_parameter("enableClouds", value=True)
 content.add_parameter("enableAurora", value=True)
@@ -72,7 +72,7 @@ def update():
 
     global sunset
 
-    updateTime()
+    #updateTime()
 
     sunset.update()
     clouds.update()

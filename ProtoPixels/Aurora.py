@@ -21,11 +21,13 @@ class Aurora:
         self.clouds_color = ofColor(255, 255, 255)
         self.speed = 0.1
         self.number = 0.8
-        self.contrast = 1.0
+        self.contrast = 1.5
         self.saturation = 1.0
         self.brightness = 1.0
         self.gamma = 1.0
         self.period = 90
+        self.elapsedTime = 0.0
+        self.one_day_in_seconds = 60*60*24
         
         self.setup()
 
@@ -65,6 +67,7 @@ class Aurora:
 
 
     def update(self):
+        self.updateTime()
         self.updateSaturation()
         self.updateAlpha()
         self.updateFbo()
@@ -75,8 +78,13 @@ class Aurora:
         valueScaled = float(value -leftMin)/float(leftSpan)
         return rightMin + valueScaled*rightSpan
 
+    def updateTime(self):
+        self.elapsedTime += ofGetLastFrameTime()
+        if self.elapsedTime > self.one_day_in_seconds:
+            self.elapsedTime-= self.one_day_in_seconds
+
     def updateSaturation(self):
-        angle =  np.sin(ofGetElapsedTimef()*np.pi/self.period)
+        angle =  np.sin(self.elapsedTime*np.pi/self.period)
         #print angle 
         self.saturation = self.translate(angle, -1.0,1.0, 0.3, 1.5)
         #print self.saturation 
@@ -97,8 +105,8 @@ class Aurora:
         if self.shaderNoise.isLoaded():
             self.shaderNoise.begin()
             self.shaderNoise.setUniform1f('alpha',  self.currentAlpha)
-            self.shaderNoise.setUniform1f('amplitude', 8)
-            self.shaderNoise.setUniform1f('time', ofGetElapsedTimef()*0.2)
+            self.shaderNoise.setUniform1f('amplitude', 15)
+            self.shaderNoise.setUniform1f('time', self.elapsedTime*0.4)
             self.shaderNoise.setUniform1f('frequency', 1.0)
             self.shaderNoise.setUniform1f('speed', 0.7)
             self.fbo.draw(0,0)
@@ -118,7 +126,7 @@ class Aurora:
 
             self.shader.begin()
             #self.shader.setUniform1f('alpha',  self.currentAlpha)
-            self.shader.setUniform1f('iTime', ofGetElapsedTimef()*self.speed)
+            self.shader.setUniform1f('iTime', self.elapsedTime*self.speed)
             self.shader.setUniform3f('iResolution', float(self.width), float(self.height),0.0)
             #self.shader.setUniformTexture("iChannel0", self.ch1, 1);
             self.shader.setUniformTexture("iChannel1", self.fbo2 , 2);
@@ -126,8 +134,8 @@ class Aurora:
             self.shader.setUniform1f('brightness', self.brightness)
             self.shader.setUniform1f('saturation', self.saturation)
             self.shader.setUniform1f('gamma', self.gamma)
-            self.img.draw(-self.width/2.,-self.height/2.,self.width,self.height)
-            #ofDrawRectangle(-self.width/2.,-self.height/2.,self.width,self.height)
+            #self.img.draw(-self.width/2.,-self.height/2.,self.width,self.height)
+            ofDrawRectangle(-self.width/2.,-self.height/2.,self.width,self.height)
             #self.fbo.draw(0,0)
        
             self.shader.end()        

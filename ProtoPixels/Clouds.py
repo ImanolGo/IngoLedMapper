@@ -17,13 +17,15 @@ class Clouds:
         self.targetAlpha = 1.0
         self.skycolour = ofColor(36, 140, 255)
         self.clouds_color = ofColor(255, 255, 255)
-        self.speed = 0.1
+        self.speed = 0.04
         self.number = 0.8
-        self.contrast = 1.5
+        self.contrast = 0.6
         self.saturation = 1.0
-        self.brightness = 1.0
+        self.brightness = 1.2
         self.gamma = 1.0
-        self.period = 300
+        self.period = 90
+        self.elapsedTime = 0.0
+        self.one_day_in_seconds = 60*60*24
         
         self.setup()
 
@@ -32,6 +34,7 @@ class Clouds:
         self.setupShader()
 
     def update(self):
+        self.updateTime()
         self.updateNumber()
         self.updateAlpha()
         self.updateFbo()
@@ -42,9 +45,15 @@ class Clouds:
         valueScaled = float(value -leftMin)/float(leftSpan)
         return rightMin + valueScaled*rightSpan
 
+    def updateTime(self):
+        self.elapsedTime += ofGetLastFrameTime()
+        if self.elapsedTime > self.one_day_in_seconds:
+            self.elapsedTime-= self.one_day_in_seconds
+
     def updateNumber(self):
-        angle =  np.sin(ofGetElapsedTimef()*np.pi/self.period)
-        self.number = self.translate(angle, -1.0,1.0, 0.2, 0.9)
+        angle =  np.sin(self.elapsedTime*np.pi/self.period)
+        self.number = self.translate(angle, -1.0,1.0, 0.6, 1.5)
+        self.speed =  self.translate(angle, -1.0,1.0, 0.01, 0.04)
 
     def updateAlpha(self):
         self.currentAlpha = self.currentAlpha + (self.targetAlpha - self.currentAlpha)*0.02
@@ -76,7 +85,7 @@ class Clouds:
 
             self.shader.begin()
             self.shader.setUniform1f('alpha',  self.currentAlpha)
-            self.shader.setUniform1f('iTime', ofGetElapsedTimef()*self.speed*0.4)
+            self.shader.setUniform1f('iTime', self.elapsedTime*self.speed)
             self.shader.setUniform3f('iResolution', float(self.width), float(self.height),0.0)
             self.shader.setUniform1f('cloudcover', self.number)
             self.shader.setUniform1f('contrast',  self.contrast)

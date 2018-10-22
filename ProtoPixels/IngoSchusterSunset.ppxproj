@@ -1935,10 +1935,10 @@
                 </projection_parameters>
                 <python_script type="filepath">$PROJECT_DIR/mainSunset.py</python_script>
                 <params>
-                    <gamma type="float">0.7</gamma>
+                    <gamma type="float">1</gamma>
                 </params>
             </parameters>
-            <transformation type="matrix4x4">-0.192493,   -2.052,        0,        0&#x0A;0.697213, -0.0654037,        0,        0&#x0A;       0,        0,        1,        0&#x0A;-0.0493352, -1.02707,        0,        1</transformation>
+            <transformation type="matrix4x4">-0.0135777, -2.06096,        0,        0&#x0A;0.366829, -0.00241668,        0,        0&#x0A;       0,        0,        1,        0&#x0A;-0.00480719, -1.03112,        0,        1</transformation>
         </content>
     </contents>
     <groups></groups>

@@ -32,13 +32,17 @@ void ofApp::setup(){
     smoothedVol     = 0.0;
     scaledVol        = 0.0;
     
-    soundStream.setup(this, 0, 2, 44100, bufferSize, 4);
+    soundStream.setDeviceID(2);
+    soundStream.setup(this, 0, 1, 44100, bufferSize, 2);
     soundStream.start();
     
     
     
     // open an outgoing connection to HOST:PORT
     sender.setup(HOST, PORT);
+    
+    gui.setup(); // most of the time you don't need a name
+    gui.add(volume.setup("volume", 1.0, 5.0, 0.0));
 
 }
 
@@ -46,17 +50,16 @@ void ofApp::setup(){
 void ofApp::update()
 {
     
-    scaledVol = ofMap(smoothedVol, 0.0, 0.17, 0.0, 1.0, true);
+    scaledVol = ofMap(volume*smoothedVol, 0.0, 0.5, 0.0, 1.0, true);
     
     //lets record the volume into an array
-    volHistory.push_back( scaledVol );
+    //volHistory.push_back( scaledVol );
     
     //if we are bigger the the size we want to record - lets drop the oldest value
-    if( volHistory.size() >= 400 ){
-        volHistory.erase(volHistory.begin(), volHistory.begin()+1);
-    }
+   //
     
-    scaledVol = ofClamp(scaledVol, 0.0, 1.0);
+   // scaledVol = ofClamp(scaledVol, 0.0, 1.0);
+    //std::cout<< "Energy: " << scaledVol;
 
 }
 
@@ -80,6 +83,8 @@ void ofApp::draw()
     m.setAddress("/ppx/energy");
     m.addFloatArg(scaledVol);
     sender.sendMessage(m, false);
+    
+    gui.draw();
     
     
     
@@ -119,14 +124,12 @@ void ofApp::audioIn(float * input, int bufferSize, int nChannels){
     // samples are "interleaved"
     int numCounted = 0;
     
-    //lets go through each sample and calculate the root mean square which is a rough way to calculate volume
+    //lets go through each sample and calculate the root mean square which is a rough way to
+    
     for (int i = 0; i < bufferSize; i++){
-        left[i]        = input[i*2]*0.5;
-        right[i]    = input[i*2+1]*0.5;
-        
+        left[i]  = input[i];
         curVol += left[i] * left[i];
-        curVol += right[i] * right[i];
-        numCounted+=2;
+        numCounted++;
     }
     
     //this is how we get the mean of rms :)
@@ -135,9 +138,8 @@ void ofApp::audioIn(float * input, int bufferSize, int nChannels){
     // this is how we get the root of rms :)
     curVol = sqrt( curVol );
     
-    smoothedVol *= 0.98;
-    smoothedVol += 0.02 * curVol;
-    
+    smoothedVol *= 0.92;
+    smoothedVol += 0.08 * curVol;
     bufferCounter++;
     
 }

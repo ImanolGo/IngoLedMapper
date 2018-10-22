@@ -15,6 +15,9 @@ class Sunset:
         self.fbo.allocate(width,height)
         self.currentAlpha = 1.0
         self.targetAlpha = 1.0
+        self.elapsedTime = 0.0
+        self.one_day_in_seconds = 60*60*24
+        self.speed = 1.0
         self.setup()
 
 
@@ -22,8 +25,14 @@ class Sunset:
         self.setupShader()
 
     def update(self):
+        self.updateTime()
         self.updateAlpha()
         self.updateFbo()
+
+    def updateTime(self):
+        self.elapsedTime += ofGetLastFrameTime()
+        if self.elapsedTime > self.one_day_in_seconds:
+            self.elapsedTime-= self.one_day_in_seconds
 
     def updateAlpha(self):
         self.currentAlpha = self.currentAlpha + (self.targetAlpha - self.currentAlpha)*0.02
@@ -46,7 +55,7 @@ class Sunset:
         if self.shader.isLoaded():
             self.shader.begin()
             self.shader.setUniform1f('alpha',  self.currentAlpha)
-            self.shader.setUniform1f('iGlobalTime', ofGetElapsedTimef())
+            self.shader.setUniform1f('iGlobalTime', self.elapsedTime*self.speed)
             self.shader.setUniform3f('iResolution', float(self.width), float(self.height),0.0)
             ofDrawRectangle(-self.width/2.,-self.height/2.,self.width,self.height)
             #self.fbo.draw(0,0)
